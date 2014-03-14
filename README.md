@@ -7,7 +7,7 @@ In 2013, [Matt D. Smith](http://twitter.com/mds) unveiled the **Float Label** us
 
 I also want to credit [Jared Verdi](http://twitter.com/jverdi) for developing the first iOS implementation of this pattern in his [JVFloatLabeledTextField](https://github.com/jverdi/JVFloatLabeledTextField) project. I used it as a reference to make this version, but executed many aspects differently. I also added a few other features that I personally needed, and plan on enhancing this library overtime.
 
-->![Sample Gif of Library in Action](https://raw.github.com/ArtSabintsev/UIFloatLabelTextField/master/UIFloatLabelTextFieldSample.gif =211x375)<-
+->![Sample Gif of Library in Action](https://raw.github.com/ArtSabintsev/UIFloatLabelTextField/master/UIFloatLabelTextFieldSample.gif)<-
 
 ### Changelog (v1.0.0)
 - Initial Commit
