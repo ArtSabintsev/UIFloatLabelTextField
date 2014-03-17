@@ -147,12 +147,7 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
     UIViewAnimationOptions combinedOptions = UIViewAnimationOptionBeginFromCurrentState | easingOptions;
     void (^animationBlock)(void) = ^{
 
-        _floatLabel.alpha = (animationType == UIFloatLabelAnimationTypeShow) ? 1.0f : 0.0f;
-        CGFloat yOrigin = (animationType == UIFloatLabelAnimationTypeShow) ? 0.0f : _verticalPadding;
-        _floatLabel.frame = CGRectMake(_xOrigin,
-                                       yOrigin,
-                                       CGRectGetWidth([_floatLabel frame]),
-                                       CGRectGetHeight([_floatLabel frame]));
+        [self absoluteFloatLabelOffsetForAnimation:animationType];
     };
     
     // Toggle floatLabel visibility via UIView animation
@@ -235,6 +230,17 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
     [NSTimer scheduledTimerWithTimeInterval:duration target:self selector:@selector(animateClearingTextFieldWithArray:) userInfo:textArray repeats:YES];
 }
 
+- (void)absoluteFloatLabelOffsetForAnimation:(UIFloatLabelAnimationType)animationType
+{
+    _floatLabel.alpha = (animationType == UIFloatLabelAnimationTypeShow) ? 1.0f : 0.0f;
+    CGFloat yOrigin = (animationType == UIFloatLabelAnimationTypeShow) ? 3.0f : _verticalPadding;
+    _floatLabel.frame = CGRectMake(_xOrigin,
+                                   yOrigin,
+                                   CGRectGetWidth([_floatLabel frame]),
+                                   CGRectGetHeight([_floatLabel frame]));
+
+}
+
 - (void)centerFloatLabel
 {
    [_floatLabel setCenter:CGPointMake(_xOrigin, _verticalPadding)];
@@ -250,6 +256,17 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
 }
 
 #pragma mark - UITextField (Override)
+- (void)setText:(NSString *)text
+{
+    [super setText:text];
+    
+    // When textField is pre-populated, show non-animated version of floatLabel
+    if ([text length] && ![_floatLabel alpha]) {
+        [self absoluteFloatLabelOffsetForAnimation:UIFloatLabelAnimationTypeShow];
+        _floatLabel.textColor = _floatLabelPassiveColor;
+    }
+}
+
 - (void)setPlaceholder:(NSString *)placeholder
 {
     [super setPlaceholder:placeholder];
