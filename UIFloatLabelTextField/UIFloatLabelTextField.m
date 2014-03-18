@@ -164,8 +164,7 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
     UIViewAnimationOptions easingOptions = (animationType == UIFloatLabelAnimationTypeShow) ? UIViewAnimationOptionCurveEaseOut : UIViewAnimationOptionCurveEaseIn;
     UIViewAnimationOptions combinedOptions = UIViewAnimationOptionBeginFromCurrentState | easingOptions;
     void (^animationBlock)(void) = ^{
-        
-        [self absoluteFloatLabelOffsetForAnimation:animationType];
+        [self absoluteFloatLabelOffset:animationType];
     };
     
     // Toggle floatLabel visibility via UIView animation
@@ -245,7 +244,7 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
     [NSTimer scheduledTimerWithTimeInterval:duration target:self selector:@selector(animateClearingTextFieldWithArray:) userInfo:textArray repeats:YES];
 }
 
-- (void)absoluteFloatLabelOffsetForAnimation:(UIFloatLabelAnimationType)animationType
+- (void)absoluteFloatLabelOffset:(UIFloatLabelAnimationType)animationType
 {
     _floatLabel.alpha = (animationType == UIFloatLabelAnimationTypeShow) ? 1.0f : 0.0f;
     CGFloat yOrigin = (animationType == UIFloatLabelAnimationTypeShow) ? 3.0f : _verticalPadding;
@@ -270,8 +269,8 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
     [super setText:text];
     
     // When textField is pre-populated, show non-animated version of floatLabel
-    if ([text length] && ![self placeholder]) {
-        [self absoluteFloatLabelOffsetForAnimation:UIFloatLabelAnimationTypeShow];
+    if ([text length] && !_storedText) {
+        [self absoluteFloatLabelOffset:UIFloatLabelAnimationTypeShow];
         _floatLabel.textColor = _floatLabelPassiveColor;
     }
 }

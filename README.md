@@ -11,8 +11,8 @@ I also want to credit [**Jared Verdi**](http://twitter.com/jverdi) for developin
 
 Image credit goes to [Matt D. Smith](http://twitter.com/mds). More information about this image and the float label pattern can be found at [FloatLabel.com](http://www.floatlabel.com).
 
-### Changelog (v1.0.2)
-- Renamed UIMenuController-altering properties.
+### Changelog (v1.0.3)
+- Bugfix for pre-populated text fields
 
 ### Features
 - Works with all view `init` styles
