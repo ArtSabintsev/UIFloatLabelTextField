@@ -7,6 +7,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/ArtSabintsev/UIFloatLabelTextField.git", :tag => "1.0.3" }
   s.source_files = 'UIFloatLabelTextField/*.{h,m}'
   s.requires_arc = true
+  s.social_media_url = 'https://twitter.com/ArtSabintsev'
   s.author       = { "Arthur Ariel Sabintsev" => "arthur@sabintsev.com" }
   s.license      = {
      :type => 'MIT',
