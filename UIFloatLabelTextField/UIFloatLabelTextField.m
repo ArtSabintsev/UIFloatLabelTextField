@@ -70,6 +70,7 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
 {
     // Build textField
     [self setupTextField];
+    [self.clearTextFieldButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
     
     // Reference Apple's clearButton and add animation
     [self setupClearTextFieldButton];
