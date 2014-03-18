@@ -11,21 +11,20 @@ I also want to credit [**Jared Verdi**](http://twitter.com/jverdi) for developin
 
 Image credit goes to [Matt D. Smith](http://twitter.com/mds). More information about this image and the float label pattern can be found at [FloatLabel.com](http://www.floatlabel.com).
 
-### Changelog (v1.0.1)
-- Float label no longer hugs the top edge when visible
-- Float label now appears if text field is pre-populated
+### Changelog (v1.0.2)
+- Renamed UIMenuController-altering properties.
 
 ### Features
-- Works with all `NSTextAlignments`
 - Works with all view `init` styles
 	- Visual Formatting Language (for programmatic NSAutoLayout)
 	- Manual Frame Initialization
 	- Storyboards and Xibs
+- Works with all `NSTextAlignments`
 - Support for disabling all default UIMenuController options
-	- Paste, Copy, Cut, Select, Select All
+	- E.g., Paste, Copy, Cut, Select, Select All
 - Animations
-	- UILabel animation for toggling UILabel visibility
-	- Animation for clearing text
+	- Animation when toggling UILabel visibility
+	- Animation when clearing text
 
 ### Installation
 ```

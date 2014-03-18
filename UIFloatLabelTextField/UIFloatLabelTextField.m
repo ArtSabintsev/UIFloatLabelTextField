@@ -77,6 +77,9 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
     
     // Build floatLabel
     [self setupFloatLabel];
+    
+    // Enable default UIMenuController options
+    [self setupMenuController];
 }
 
 - (void)setupTextField
@@ -137,6 +140,15 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
     
     // animationDuration
     _floatLabelAnimationDuration = @0.25;
+}
+
+- (void)setupMenuController
+{
+    _pastingEnabled = @YES;
+    _copyingEnabled = @YES;
+    _cuttingEnabled = @YES;
+    _selectEnabled = @YES;
+    _selectAllEnabled = @YES;
 }
 
 #pragma mark - Animation
@@ -337,15 +349,15 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender
 {
     if (action == @selector(paste:)) { // Toggle Pasting
-        return ([_disablePasting boolValue]) ? NO : YES;
+        return ([_pastingEnabled boolValue]) ? YES : NO;
     } else if (action == @selector(copy:)) { // Toggle Copying
-        return ([_disableCopying boolValue]) ? NO : YES;
+        return ([_copyingEnabled boolValue]) ? YES : NO;
     } else if (action == @selector(cut:)) { // Toggle Cutting
-        return ([_disableCutting boolValue]) ? NO : YES;
+        return ([_cuttingEnabled boolValue]) ? YES : NO;
     } else if (action == @selector(select:)) { // Toggle Select
-        return ([_disableSelect boolValue]) ? NO : YES;
+        return ([_selectEnabled boolValue]) ? YES : NO;
     } else if (action == @selector(selectAll:)) { // Toggle Select All
-        return ([_disableSelectAll boolValue]) ? NO : YES;
+        return ([_selectAllEnabled boolValue]) ? YES : NO;
     }
     
     return [super canPerformAction:action withSender:sender];

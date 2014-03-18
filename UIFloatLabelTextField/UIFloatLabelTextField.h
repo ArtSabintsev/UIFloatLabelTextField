@@ -48,30 +48,30 @@
  * Disables the option to @a paste in the @c UIMenuController. 
  * This @c NSNumber value is converted to a @c BOOL.
  */
-@property (nonatomic, assign) NSNumber  *disablePasting;                UI_APPEARANCE_SELECTOR
+@property (nonatomic, assign) NSNumber  *pastingEnabled;                UI_APPEARANCE_SELECTOR
 
 /**
  * Disables the option to @a copy in the @c UIMenuController.
  * This @c NSNumber value is converted to a @c BOOL.
  */
-@property (nonatomic, assign) NSNumber  *disableCopying;                UI_APPEARANCE_SELECTOR
+@property (nonatomic, assign) NSNumber  *copyingEnabled;                UI_APPEARANCE_SELECTOR
 
 /**
  * Disables the option to @a cut in the @c UIMenuController.
  * This @c NSNumber value is converted to a @c BOOL.
  */
-@property (nonatomic, assign) NSNumber  *disableCutting;                UI_APPEARANCE_SELECTOR
+@property (nonatomic, assign) NSNumber  *cuttingEnabled;                UI_APPEARANCE_SELECTOR
 
 /**
  * Disables the option to @a select in the @c UIMenuController.
  * This @c NSNumber value is converted to a @c BOOL.
  */
-@property (nonatomic, assign) NSNumber  *disableSelect;                 UI_APPEARANCE_SELECTOR
+@property (nonatomic, assign) NSNumber  *selectEnabled;                 UI_APPEARANCE_SELECTOR
 
 /**
  * Disables the option to @a select-all in the @c UIMenuController.
  * This @c NSNumber value is converted to a @c BOOL.
  */
-@property (nonatomic, assign) NSNumber  *disableSelectAll;              UI_APPEARANCE_SELECTOR
+@property (nonatomic, assign) NSNumber  *selectAllEnabled;              UI_APPEARANCE_SELECTOR
 
 @end
