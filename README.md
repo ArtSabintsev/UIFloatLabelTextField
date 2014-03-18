@@ -8,6 +8,7 @@ In 2013, [**Matt D. Smith**](http://twitter.com/mds) unveiled the **[Float Label
 I also want to credit [**Jared Verdi**](http://twitter.com/jverdi) for developing the first iOS implementation of this pattern in his [**JVFloatLabeledTextField**](https://github.com/jverdi/JVFloatLabeledTextField) project. I used it as a reference to make this version, but executed many aspects differently. I also added a few other features that I personally needed, and plan on enhancing this library overtime.
 
 ![Sample Gif of Library in Action](http://d13yacurqjgara.cloudfront.net/users/6410/screenshots/1254439/form-animation-_gif_.gif)
+
 Image credit goes to [Matt D. Smith](http://twitter.com/mds). More information about this image and the float label pattern can be found at [FloatLabel.com](http://www.floatlabel.com).
 
 ### Changelog (v1.0.1)
