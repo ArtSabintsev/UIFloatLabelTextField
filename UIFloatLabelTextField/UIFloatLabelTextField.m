@@ -71,22 +71,25 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
     // Build textField
     [self setupTextField];
     
+    // Reference Apple's clearButton and add animation
+    [self setupClearTextFieldButton];
+    
     // Build floatLabel
-    [self setupFloatLabelDefaults];
+    [self setupFloatLabel];
 }
 
 - (void)setupTextField
 {
     // Textfield Padding
     _horizontalPadding = 5.0f;
-    _verticalPadding = 0.5f * CGRectGetHeight(self.frame);
+    _verticalPadding = 0.5f * CGRectGetHeight([self frame]);
     
     // Text Alignment
     [self setTextAlignment:NSTextAlignmentLeft];
     
     // Enable clearButton when textField becomes firstResponder
     self.clearButtonMode = UITextFieldViewModeWhileEditing;
- 
+    
     /*
      Observer for replicating `textField:shouldChangeCharactersInRange:replacementString:` UITextFieldDelegate method,
      without explicitly using UITextFieldDelegate.
@@ -96,41 +99,43 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
                                                  name:UITextFieldTextDidChangeNotification object:nil];
 }
 
-- (void)setupFloatLabelDefaults
+- (void)setupClearTextFieldButton
+{
+    // Create selector for Apple's built-in UITextField button - clearButton
+    SEL clearButtonSelector = NSSelectorFromString(@"clearButton");
+    
+    // Reference clearButton getter
+    IMP clearButtonImplementation = [self methodForSelector:clearButtonSelector];
+    
+    // Create function pointer that returns UIButton from implementation of method that contains clearButtonSelector
+    UIButton * (* clearButtonFunctionPointer)(id, SEL) = (void *)clearButtonImplementation;
+    
+    // Set clearTextFieldButton reference to "clearButton" from clearButtonSelector
+    _clearTextFieldButton = clearButtonFunctionPointer(self, clearButtonSelector);
+    
+    // Remove all clearTextFieldButton target-actions (e.g., Apple's standard clearButton actions)
+    [self.clearTextFieldButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
+    
+    // Add new target-action for clearTextFieldButton
+    [_clearTextFieldButton addTarget:self action:@selector(clearTextField) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)setupFloatLabel
 {
     // floatLabel
     _floatLabel = [UILabel new];
     _floatLabel.textColor = [UIColor blackColor];
     _floatLabel.font =[UIFont boldSystemFontOfSize:12.0f];
     _floatLabel.alpha = 0.0f;
+    [_floatLabel setCenter:CGPointMake(_xOrigin, _verticalPadding)];
     [self addSubview:_floatLabel];
-    [self centerFloatLabel];
     
     // colors
     _floatLabelPassiveColor = [UIColor lightGrayColor];
     _floatLabelActiveColor = [UIColor blueColor];
     
     // animationDuration
-    _floatLabelAnimationDuration = @0.5;
-}
-
-- (void)setupClearTextFieldButton
-{
-    /*
-     Traverse UIFloatLabelTextField view hierarchy in search of UIButton instance.
-     
-     The UIButton (there's only one and it represents the 'clear text' button)
-     is initialized only once per UIFloatLabelTextField object, but is removed from 
-     the view hiearchy when resignFirstResponder is called. It's re-added to the
-     view hiearchy when becomeFirstResponder is called.
-    */
-     [self.clearTextFieldButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
-    for (UIView *view in [self subviews]) {
-        if ([view isMemberOfClass:[UIButton class]]) {
-            _clearTextFieldButton = (UIButton *)view;
-            [_clearTextFieldButton addTarget:self action:@selector(clearTextField) forControlEvents:UIControlEventTouchUpInside];
-        }
-    }
+    _floatLabelAnimationDuration = @0.25;
 }
 
 #pragma mark - Animation
@@ -146,7 +151,7 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
     UIViewAnimationOptions easingOptions = (animationType == UIFloatLabelAnimationTypeShow) ? UIViewAnimationOptionCurveEaseOut : UIViewAnimationOptionCurveEaseIn;
     UIViewAnimationOptions combinedOptions = UIViewAnimationOptionBeginFromCurrentState | easingOptions;
     void (^animationBlock)(void) = ^{
-
+        
         [self absoluteFloatLabelOffsetForAnimation:animationType];
     };
     
@@ -164,7 +169,7 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
     // Reference textArray from NSTimer object
     NSMutableArray *textArray = [timer userInfo];
     
-    /* 
+    /*
      Remove last letter (e.g., last object in array) per method call,
      and display updated/truncated textField text.
      */
@@ -174,8 +179,10 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
         _storedText = [csvString stringByReplacingOccurrencesOfString:@"," withString:@""];
         self.text = _storedText;
     } else {
+        _storedText = nil;
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
         [timer invalidate];
+        [self toggleFloatLabel:UIFloatLabelAnimationTypeHide];
         [self resignFirstResponder];
     }
 }
@@ -191,18 +198,13 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
 
 - (void)textFieldUpdated:(NSNotification *)notification
 {
-    // Initialize clearButton
-    if (![self clearTextFieldButton] && ![_disableClearingAnimation boolValue]) {
-        [self setupClearTextFieldButton];
-    }
-
-    if (notification.name == UITextFieldTextDidChangeNotification) {
-        if ([self.text length]) {
-            _storedText = [self text];
-            if (![_floatLabel alpha]) {
-                [self toggleFloatLabel:UIFloatLabelAnimationTypeShow];
-            }
-        } else {
+    if ([self.text length]) {
+        _storedText = [self text];
+        if (![_floatLabel alpha]) {
+            [self toggleFloatLabel:UIFloatLabelAnimationTypeShow];
+        }
+    } else {
+        if ([_floatLabel alpha]) {
             [self toggleFloatLabel:UIFloatLabelAnimationTypeHide];
         }
     }
@@ -238,12 +240,6 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
                                    yOrigin,
                                    CGRectGetWidth([_floatLabel frame]),
                                    CGRectGetHeight([_floatLabel frame]));
-
-}
-
-- (void)centerFloatLabel
-{
-   [_floatLabel setCenter:CGPointMake(_xOrigin, _verticalPadding)];
 }
 
 - (void)updateRectForTextFieledGeneratedViaAutoLayout
@@ -261,7 +257,7 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
     [super setText:text];
     
     // When textField is pre-populated, show non-animated version of floatLabel
-    if ([text length] && ![_floatLabel alpha]) {
+    if ([text length] && ![self placeholder]) {
         [self absoluteFloatLabelOffsetForAnimation:UIFloatLabelAnimationTypeShow];
         _floatLabel.textColor = _floatLabelPassiveColor;
     }
@@ -281,7 +277,7 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
 - (void)setTextAlignment:(NSTextAlignment)textAlignment
 {
     [super setTextAlignment:textAlignment];
-
+    
     switch (textAlignment) {
         case NSTextAlignmentRight: {
             _xOrigin = CGRectGetWidth([self frame]) - CGRectGetWidth([_floatLabel frame]) - _horizontalPadding;
@@ -295,8 +291,6 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
             _xOrigin = _horizontalPadding;
             break;
     }
-    
-    [self centerFloatLabel];
 }
 
 - (CGRect)textRectForBounds:(CGRect)bounds
@@ -313,18 +307,18 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
 -(BOOL)becomeFirstResponder
 {
     [super becomeFirstResponder];
- 
+    
     /*
-     verticalPadding must be manually set if textField was initialized 
+     verticalPadding must be manually set if textField was initialized
      using NSAutoLayout constraints
-    */
-     if (!_verticalPadding) {
+     */
+    if (!_verticalPadding) {
         [self updateRectForTextFieledGeneratedViaAutoLayout];
     }
     
     _floatLabel.textColor = _floatLabelActiveColor;
     _storedText = [self text];
-
+    
     return YES;
 }
 

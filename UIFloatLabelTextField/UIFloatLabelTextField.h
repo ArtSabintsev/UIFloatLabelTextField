@@ -74,10 +74,4 @@
  */
 @property (nonatomic, assign) NSNumber  *disableSelectAll;              UI_APPEARANCE_SELECTOR
 
-/**
- * Disables the text field clearing animation.
- * This @c NSNumber value is converted to a @c BOOL.
- */
-@property (nonatomic, assign) NSNumber  *disableClearingAnimation;      UI_APPEARANCE_SELECTOR
-
 @end
