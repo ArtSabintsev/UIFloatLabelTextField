@@ -37,5 +37,5 @@ Check out `UIFloatLabelTextField.h` for a full list of editable properties. Also
 ### Created and maintained by
 [Arthur Ariel Sabintsev](http://www.sabintsev.com/) 
 
-### LICENSE
+### License
 Please refer to the **LICENSE** file.
