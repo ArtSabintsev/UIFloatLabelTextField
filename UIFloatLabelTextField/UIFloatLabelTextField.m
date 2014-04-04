@@ -70,7 +70,6 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
 {
     // Build textField
     [self setupTextField];
-    [self.clearTextFieldButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
     
     // Reference Apple's clearButton and add animation
     [self setupClearTextFieldButton];
@@ -254,7 +253,7 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
                                    CGRectGetHeight([_floatLabel frame]));
 }
 
-- (void)updateRectForTextFieledGeneratedViaAutoLayout
+- (void)updateRectForTextFieldGeneratedViaAutoLayout
 {
     _verticalPadding = 0.5f * CGRectGetHeight([self frame]);
     _floatLabel.frame = CGRectMake(_xOrigin,
@@ -325,7 +324,7 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
      using NSAutoLayout constraints
      */
     if (!_verticalPadding) {
-        [self updateRectForTextFieledGeneratedViaAutoLayout];
+        [self updateRectForTextFieldGeneratedViaAutoLayout];
     }
     
     _floatLabel.textColor = _floatLabelActiveColor;
