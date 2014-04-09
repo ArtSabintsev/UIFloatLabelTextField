@@ -23,7 +23,7 @@
 @property (nonatomic, strong) UIFont    *floatLabelFont;                UI_APPEARANCE_SELECTOR
 
 /**
- The inactive color for the floatLabel. 
+ * The inactive color for the floatLabel. 
  *
  * Defaults to @c lightGrayColor.
  */

@@ -14,7 +14,7 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
     UIFloatLabelAnimationTypeHide
 };
 
-@interface UIFloatLabelTextField () <UITextFieldDelegate>
+@interface UIFloatLabelTextField ()
 
 @property (nonatomic, copy) NSString *storedText;
 @property (nonatomic, strong) UIButton *clearTextFieldButton;
@@ -98,7 +98,7 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
      without explicitly using UITextFieldDelegate.
      */
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(textFieldUpdated:)
+                                             selector:@selector(textDidChange:)
                                                  name:UITextFieldTextDidChangeNotification object:nil];
 }
 
@@ -174,7 +174,6 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
                      completion:nil];
 }
 
-
 - (void)animateClearingTextFieldWithArray:(NSTimer *)timer
 {
     // Reference textArray from NSTimer object
@@ -207,7 +206,7 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
                             _horizontalPadding);
 }
 
-- (void)textFieldUpdated:(NSNotification *)notification
+- (void)textDidChange:(NSNotification *)notification
 {
     if ([self.text length]) {
         _storedText = [self text];
