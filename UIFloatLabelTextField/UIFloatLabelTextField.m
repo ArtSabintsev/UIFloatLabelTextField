@@ -255,10 +255,14 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
 - (void)updateRectForTextFieldGeneratedViaAutoLayout
 {
     _verticalPadding = 0.5f * CGRectGetHeight([self frame]);
-    _floatLabel.frame = CGRectMake(_xOrigin,
-                                   _verticalPadding,
-                                   CGRectGetWidth([_floatLabel frame]),
-                                   CGRectGetHeight([_floatLabel frame]));
+    
+    // Do not shift the frame if textField is pre-populated
+    if (![self.text length]) {
+        _floatLabel.frame = CGRectMake(_xOrigin,
+                                       _verticalPadding,
+                                       CGRectGetWidth([_floatLabel frame]),
+                                       CGRectGetHeight([_floatLabel frame]));
+    }
 }
 
 #pragma mark - UITextField (Override)

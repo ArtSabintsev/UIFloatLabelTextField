@@ -29,6 +29,7 @@
     [firstNameTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
     firstNameTextField.floatLabelActiveColor = [UIColor orangeColor];
     firstNameTextField.placeholder = @"First Name";
+    firstNameTextField.text = @"Test";
     [self.view addSubview:firstNameTextField];
     
     UIFloatLabelTextField *lastNameTextField = [UIFloatLabelTextField new];
