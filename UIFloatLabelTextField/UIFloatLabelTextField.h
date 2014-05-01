@@ -16,13 +16,6 @@
 @property (nonatomic, strong) UILabel   *floatLabel;
 
 /**
- * The font for @c floatLabel.
- *
- * Defaults to Helvetica Neue Bold 12.0f.
- */
-@property (nonatomic, strong) UIFont    *floatLabelFont;                UI_APPEARANCE_SELECTOR
-
-/**
  * The inactive color for the floatLabel. 
  *
  * Defaults to @c lightGrayColor.
