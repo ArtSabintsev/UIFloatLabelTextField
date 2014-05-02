@@ -13,7 +13,7 @@ In 2013, [**Matt D. Smith**](http://twitter.com/mds) unveiled the **[Float Label
 Image credit: [Matt D. Smith](http://twitter.com/mds). 
 ### Changelog (v1.0.6)
 - Fixed pre-populated text field issue
-- Added [UIFloatLabelTextField](http://www.github.com/ArtSabintsev/UIFloatLabelTextView) reference in README
+- Added [UIFloatLabelTextView](http://www.github.com/ArtSabintsev/UIFloatLabelTextView) reference in README
 
 ### Features
 - Works with all view `init` styles
