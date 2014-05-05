@@ -289,13 +289,6 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
     [_floatLabel sizeToFit];
 }
 
-#pragma mark - UILabel (Override)
-- (void)setFloatLabelFont:(UIFont *)floatLabelFont
-{
-    _floatLabelFont = floatLabelFont;
-    _floatLabel.font = _floatLabelFont;
-}
-
 - (void)setTextAlignment:(NSTextAlignment)textAlignment
 {
     [super setTextAlignment:textAlignment];
@@ -323,6 +316,13 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
 - (CGRect)editingRectForBounds:(CGRect)bounds
 {
     return UIEdgeInsetsInsetRect([super editingRectForBounds:bounds], [self floatLabelInsets]);
+}
+
+#pragma mark - UILabel (Override)
+- (void)setFloatLabelFont:(UIFont *)floatLabelFont
+{
+    _floatLabelFont = floatLabelFont;
+    _floatLabel.font = _floatLabelFont;
 }
 
 #pragma mark - UIView (Override)
