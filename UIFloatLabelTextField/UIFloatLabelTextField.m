@@ -92,7 +92,7 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
     
     // Enable clearButton when textField becomes firstResponder
     self.clearButtonMode = UITextFieldViewModeWhileEditing;
-    
+
     /*
      Observer for replicating `textField:shouldChangeCharactersInRange:replacementString:` UITextFieldDelegate method,
      without explicitly using UITextFieldDelegate.
@@ -281,11 +281,19 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
 {
     [super setPlaceholder:placeholder];
     
+    
     if ([placeholder length]) {
         _floatLabel.text = placeholder;
     }
     
     [_floatLabel sizeToFit];
+}
+
+#pragma mark - UILabel (Override)
+- (void)setFloatLabelFont:(UIFont *)floatLabelFont
+{
+    _floatLabelFont = floatLabelFont;
+    _floatLabel.font = _floatLabelFont;
 }
 
 - (void)setTextAlignment:(NSTextAlignment)textAlignment
@@ -315,6 +323,13 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
 - (CGRect)editingRectForBounds:(CGRect)bounds
 {
     return UIEdgeInsetsInsetRect([super editingRectForBounds:bounds], [self floatLabelInsets]);
+}
+
+#pragma mark - UIView (Override)
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    [self setTextAlignment:[self textAlignment]];
 }
 
 #pragma mark - UIResponder (Override)
