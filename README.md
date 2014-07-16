@@ -11,10 +11,8 @@ In 2013, [**Matt D. Smith**](http://twitter.com/mds) unveiled the **[Float Label
 ![Sample Gif of Library in Action](http://d13yacurqjgara.cloudfront.net/users/6410/screenshots/1254439/form-animation-_gif_.gif)
 
 Image credit: [Matt D. Smith](http://twitter.com/mds). 
-### Changelog (v1.0.8)
-- Exposed `toggleFloatLabel:` in interface. 
-	- One especially useful use case for this method is within *UITextFields* that are embedded inside a reusable *UITableViewCells*.
-	- Call this method if you need to clear the float label after your cell is reused.
+### Changelog (v1.0.9)
+- Added more logic to float label states from within the layoutSubviews method.
 
 ### Features
 - Works with all view `init` styles

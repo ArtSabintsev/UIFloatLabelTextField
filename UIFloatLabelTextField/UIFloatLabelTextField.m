@@ -324,6 +324,10 @@
 {
     [super layoutSubviews];
     [self setTextAlignment:[self textAlignment]];
+    
+    if (![self isFirstResponder] && ![self.text length]) {
+        [self absoluteFloatLabelOffset:UIFloatLabelAnimationTypeHide];
+    }
 }
 
 #pragma mark - UIResponder (Override)
