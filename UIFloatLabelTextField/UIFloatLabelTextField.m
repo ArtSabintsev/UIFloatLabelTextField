@@ -8,12 +8,6 @@
 
 #import "UIFloatLabelTextField.h"
 
-typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
-{
-    UIFloatLabelAnimationTypeShow = 0,
-    UIFloatLabelAnimationTypeHide
-};
-
 @interface UIFloatLabelTextField ()
 
 @property (nonatomic, copy) NSString *storedText;

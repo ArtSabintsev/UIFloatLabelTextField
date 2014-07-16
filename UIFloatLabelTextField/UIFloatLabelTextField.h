@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ A typedef that delineates the states of the float label
+ */
+typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
+{
+    UIFloatLabelAnimationTypeShow = 0,
+    UIFloatLabelAnimationTypeHide
+};
+
 @interface UIFloatLabelTextField : UITextField
 
 /**
@@ -73,5 +82,11 @@
  * This @c NSNumber value is converted to a @c BOOL.
  */
 @property (nonatomic, assign) NSNumber  *selectAllEnabled;              UI_APPEARANCE_SELECTOR
+
+/**
+ Toggles the float label using an animation
+ @param animationType The desired animation (and final state) for the float label.
+ */
+- (void)toggleFloatLabel:(UIFloatLabelAnimationType)animationType;
 
 @end
