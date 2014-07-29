@@ -11,11 +11,14 @@
 /**
  A typedef that delineates the states of the float label
  */
+#ifndef UIFloatLabelAnimationType
 typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
 {
     UIFloatLabelAnimationTypeShow = 0,
     UIFloatLabelAnimationTypeHide
 };
+#define UIFloatLabelAnimationType UIFloatLabelAnimationType
+#endif
 
 @interface UIFloatLabelTextField : UITextField
 
