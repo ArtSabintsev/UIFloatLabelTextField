@@ -209,7 +209,6 @@
     
     if (notification.object == self) {
         if (([self.text length] > 0) != (_storedText.length > 0)) {
-            NSLog(@"textChanged toggle");
             if ([self.text length] > 0) {
                 if (![_floatLabel alpha]) {
                     [self toggleFloatLabel:UIFloatLabelAnimationTypeShow];
