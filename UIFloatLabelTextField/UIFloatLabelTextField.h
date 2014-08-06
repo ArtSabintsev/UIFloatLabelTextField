@@ -32,21 +32,21 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
  *
  * Defaults to Helvetica Neue Bold 12.0f.
  */
-@property (nonatomic, strong) UIFont    *floatLabelFont;                UI_APPEARANCE_SELECTOR
+@property (nonatomic, strong) UIFont    *floatLabelFont UI_APPEARANCE_SELECTOR;
 
 /**
  * The inactive color for the floatLabel. 
  *
  * Defaults to @c lightGrayColor.
  */
-@property (nonatomic, strong) UIColor   *floatLabelPassiveColor;        UI_APPEARANCE_SELECTOR
+@property (nonatomic, strong) UIColor   *floatLabelPassiveColor UI_APPEARANCE_SELECTOR;
 
 /**
  The inactive color for the floatLabel. 
  * 
  * Defaults to @c blueColor.
  */
-@property (nonatomic, strong) UIColor   *floatLabelActiveColor;         UI_APPEARANCE_SELECTOR
+@property (nonatomic, strong) UIColor   *floatLabelActiveColor UI_APPEARANCE_SELECTOR;
 
 /**
  * The duration for all animations. 
@@ -54,37 +54,37 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
  *
  * Defaults to 0.5 seconds.
  */
-@property (nonatomic, strong) NSNumber  *floatLabelAnimationDuration;   UI_APPEARANCE_SELECTOR
+@property (nonatomic, strong) NSNumber  *floatLabelAnimationDuration UI_APPEARANCE_SELECTOR;
 
 /**
  * Disables the option to @a paste in the @c UIMenuController. 
  * This @c NSNumber value is converted to a @c BOOL.
  */
-@property (nonatomic, assign) NSNumber  *pastingEnabled;                UI_APPEARANCE_SELECTOR
+@property (nonatomic, assign) NSNumber  *pastingEnabled UI_APPEARANCE_SELECTOR;
 
 /**
  * Disables the option to @a copy in the @c UIMenuController.
  * This @c NSNumber value is converted to a @c BOOL.
  */
-@property (nonatomic, assign) NSNumber  *copyingEnabled;                UI_APPEARANCE_SELECTOR
+@property (nonatomic, assign) NSNumber  *copyingEnabled UI_APPEARANCE_SELECTOR;
 
 /**
  * Disables the option to @a cut in the @c UIMenuController.
  * This @c NSNumber value is converted to a @c BOOL.
  */
-@property (nonatomic, assign) NSNumber  *cuttingEnabled;                UI_APPEARANCE_SELECTOR
+@property (nonatomic, assign) NSNumber  *cuttingEnabled UI_APPEARANCE_SELECTOR;
 
 /**
  * Disables the option to @a select in the @c UIMenuController.
  * This @c NSNumber value is converted to a @c BOOL.
  */
-@property (nonatomic, assign) NSNumber  *selectEnabled;                 UI_APPEARANCE_SELECTOR
+@property (nonatomic, assign) NSNumber  *selectEnabled UI_APPEARANCE_SELECTOR;
 
 /**
  * Disables the option to @a select-all in the @c UIMenuController.
  * This @c NSNumber value is converted to a @c BOOL.
  */
-@property (nonatomic, assign) NSNumber  *selectAllEnabled;              UI_APPEARANCE_SELECTOR
+@property (nonatomic, assign) NSNumber  *selectAllEnabled UI_APPEARANCE_SELECTOR;
 
 /**
  Toggles the float label using an animation
