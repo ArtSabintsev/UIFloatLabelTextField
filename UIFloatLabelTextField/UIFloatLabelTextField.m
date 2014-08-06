@@ -202,8 +202,10 @@
 
 - (void)textDidChange:(NSNotification *)notification
 {
-    if ([self.text length]) {
-        _storedText = [self text];
+    assert([notification.name isEqualToString:UITextFieldTextDidChangeNotification]);
+    NSString *text = [notification.object valueForKeyPath:@"text"];
+    if ([text length]) {
+        _storedText = text;
         if (![_floatLabel alpha]) {
             [self toggleFloatLabel:UIFloatLabelAnimationTypeShow];
         }
