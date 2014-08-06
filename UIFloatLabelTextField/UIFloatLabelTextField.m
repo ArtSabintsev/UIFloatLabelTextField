@@ -274,10 +274,19 @@
 - (void)setPlaceholder:(NSString *)placeholder
 {
     [super setPlaceholder:placeholder];
-    
-    
-    if ([placeholder length]) {
-        _floatLabel.text = placeholder;
+    [self applyPlaceholderText:placeholder];
+}
+
+- (void)setAttributedPlaceholder:(NSAttributedString *)attributedPlaceholder
+{
+    [super setAttributedPlaceholder:attributedPlaceholder];
+    [self applyPlaceholderText:attributedPlaceholder.string];
+}
+
+- (void)applyPlaceholderText:(NSString *)placeholderText
+{
+    if ([placeholderText length]) {
+        _floatLabel.text = placeholderText;
     }
     
     [_floatLabel sizeToFit];
