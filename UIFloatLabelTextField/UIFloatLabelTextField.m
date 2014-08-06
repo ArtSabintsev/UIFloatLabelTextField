@@ -282,7 +282,14 @@
 
 - (void)setPlaceholder:(NSString *)placeholder
 {
-    [self setAttributedPlaceholder:[[NSAttributedString alloc] initWithString:placeholder attributes:@{NSForegroundColorAttributeName: self.floatLabelPassiveColor}]];
+    if ([self respondsToSelector:@selector(setAttributedPlaceholder:)]) {
+        [self setAttributedPlaceholder:[[NSAttributedString alloc] initWithString:placeholder attributes:@{NSForegroundColorAttributeName: self.floatLabelPassiveColor}]];
+    }
+    else {
+        [super setPlaceholder:placeholder];
+        [self applyPlaceholderText:placeholder];
+    }
+        
 }
 
 - (void)setAttributedPlaceholder:(NSAttributedString *)attributedPlaceholder
