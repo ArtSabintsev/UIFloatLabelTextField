@@ -148,7 +148,7 @@
 - (void)toggleFloatLabel:(UIFloatLabelAnimationType)animationType
 {
     // Placeholder
-    self.placeholder = (animationType == UIFloatLabelAnimationTypeShow) ? nil : [_floatLabel text];
+    self.placeholder = (animationType == UIFloatLabelAnimationTypeShow) ? @"" : [_floatLabel text];
     
     // Reference textAlignment to reset origin of textField and floatLabel
     _floatLabel.textAlignment = self.textAlignment = [self textAlignment];
@@ -178,6 +178,9 @@
      and display updated/truncated textField text.
      */
     if ([textArray count]) {
+        if ([textArray count] == 1) {
+            [self toggleFloatLabel:UIFloatLabelAnimationTypeHide];
+        }
         [textArray removeLastObject];
         NSString *csvString = [textArray componentsJoinedByString:@","];
         _storedText = [csvString stringByReplacingOccurrencesOfString:@"," withString:@""];
@@ -203,16 +206,21 @@
 - (void)textDidChange:(NSNotification *)notification
 {
     assert([notification.name isEqualToString:UITextFieldTextDidChangeNotification]);
-    NSString *text = [notification.object valueForKeyPath:@"text"];
-    if ([text length]) {
-        _storedText = text;
-        if (![_floatLabel alpha]) {
-            [self toggleFloatLabel:UIFloatLabelAnimationTypeShow];
+    
+    if (notification.object == self) {
+        if (([self.text length] > 0) != (_storedText.length > 0)) {
+            NSLog(@"textChanged toggle");
+            if ([self.text length] > 0) {
+                if (![_floatLabel alpha]) {
+                    [self toggleFloatLabel:UIFloatLabelAnimationTypeShow];
+                }
+            } else {
+                if ([_floatLabel alpha]) {
+                    [self toggleFloatLabel:UIFloatLabelAnimationTypeHide];
+                }
+            }
         }
-    } else {
-        if ([_floatLabel alpha]) {
-            [self toggleFloatLabel:UIFloatLabelAnimationTypeHide];
-        }
+        _storedText = self.text;
     }
 }
 
@@ -275,8 +283,7 @@
 
 - (void)setPlaceholder:(NSString *)placeholder
 {
-    [super setPlaceholder:placeholder];
-    [self applyPlaceholderText:placeholder];
+    [self setAttributedPlaceholder:[[NSAttributedString alloc] initWithString:placeholder attributes:@{NSForegroundColorAttributeName: self.floatLabelPassiveColor}]];
 }
 
 - (void)setAttributedPlaceholder:(NSAttributedString *)attributedPlaceholder
@@ -336,11 +343,10 @@
     [super layoutSubviews];
     [self setTextAlignment:[self textAlignment]];
     
-    if (![self isFirstResponder] && ![self.text length]) {
+    if ([self.text length])
+        [self absoluteFloatLabelOffset:UIFloatLabelAnimationTypeShow];
+    else
         [self absoluteFloatLabelOffset:UIFloatLabelAnimationTypeHide];
-    } else {
-       [self absoluteFloatLabelOffset:UIFloatLabelAnimationTypeShow];
-    }
 }
 
 #pragma mark - UIResponder (Override)
