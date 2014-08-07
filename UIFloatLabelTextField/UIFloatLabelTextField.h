@@ -30,7 +30,7 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
 /**
  * The font for @c floatLabel.
  *
- * Defaults to Helvetica Neue Bold 12.0f.
+ * Defaults to [UIFont boldSystemFontOfSize:12.0f].
  */
 @property (nonatomic, strong) UIFont    *floatLabelFont UI_APPEARANCE_SELECTOR;
 
@@ -42,7 +42,7 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
 @property (nonatomic, strong) UIColor   *floatLabelPassiveColor UI_APPEARANCE_SELECTOR;
 
 /**
- The inactive color for the floatLabel. 
+ The active color for the floatLabel.
  * 
  * Defaults to @c blueColor.
  */
@@ -59,14 +59,14 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
 /**
  * The font for @c placeholder.
  *
- * Defaults to Helvetica Neue Bold 12.0f.
+ * Defaults to [UIFont systemFontOfSize:12.0f].
  */
 @property (nonatomic, strong) UIFont    *placeholderFont UI_APPEARANCE_SELECTOR;
 
 /**
- * The font for @c placeholder.
+ * The color for @c placeholder.
  *
- * Defaults to Helvetica Neue Bold 12.0f.
+ * Defaults to [UIColor grayColor].
  */
 @property (nonatomic, strong) UIColor    *placeholderColor UI_APPEARANCE_SELECTOR;
 
