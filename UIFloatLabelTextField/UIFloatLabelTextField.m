@@ -15,6 +15,7 @@
 @property (nonatomic, assign) CGFloat xOrigin;
 @property (nonatomic, assign) CGFloat horizontalPadding;
 @property (nonatomic, assign) CGFloat verticalPadding;
+@property NSDictionary *placeholderAttributes;
 
 @end
 
@@ -68,7 +69,7 @@
     // Reference Apple's clearButton and add animation
     [self setupClearTextFieldButton];
     
-    // Build floatLabel
+    [self setupPlaceholder];
     [self setupFloatLabel];
     
     // Enable default UIMenuController options
@@ -117,6 +118,12 @@
     [_clearTextFieldButton addTarget:self action:@selector(clearTextField) forControlEvents:UIControlEventTouchUpInside];
 }
 
+- (void)setupPlaceholder
+{
+    _placeholderFont = [UIFont systemFontOfSize:12.0f];
+    _placeholderColor = [UIColor grayColor];
+}
+
 - (void)setupFloatLabel
 {
     // floatLabel
@@ -148,7 +155,7 @@
 - (void)toggleFloatLabel:(UIFloatLabelAnimationType)animationType
 {
     // Placeholder
-    self.placeholder = (animationType == UIFloatLabelAnimationTypeShow) ? nil : [_floatLabel text];
+    self.placeholder = (animationType == UIFloatLabelAnimationTypeShow) ? @"" : [_floatLabel text];
     
     // Reference textAlignment to reset origin of textField and floatLabel
     _floatLabel.textAlignment = self.textAlignment = [self textAlignment];
@@ -157,7 +164,7 @@
     UIViewAnimationOptions easingOptions = (animationType == UIFloatLabelAnimationTypeShow) ? UIViewAnimationOptionCurveEaseOut : UIViewAnimationOptionCurveEaseIn;
     UIViewAnimationOptions combinedOptions = UIViewAnimationOptionBeginFromCurrentState | easingOptions;
     void (^animationBlock)(void) = ^{
-        [self absoluteFloatLabelOffset:animationType];
+        [self setDynamicViewProperties:animationType];
     };
     
     // Toggle floatLabel visibility via UIView animation
@@ -178,6 +185,9 @@
      and display updated/truncated textField text.
      */
     if ([textArray count]) {
+        if ([textArray count] == 1) {
+            [self toggleFloatLabel:UIFloatLabelAnimationTypeHide];
+        }
         [textArray removeLastObject];
         NSString *csvString = [textArray componentsJoinedByString:@","];
         _storedText = [csvString stringByReplacingOccurrencesOfString:@"," withString:@""];
@@ -202,15 +212,21 @@
 
 - (void)textDidChange:(NSNotification *)notification
 {
-    if ([self.text length]) {
-        _storedText = [self text];
-        if (![_floatLabel alpha]) {
-            [self toggleFloatLabel:UIFloatLabelAnimationTypeShow];
+    assert([notification.name isEqualToString:UITextFieldTextDidChangeNotification]);
+    
+    if (notification.object == self) {
+        if (([self.text length] > 0) != (_storedText.length > 0)) {
+            if ([self.text length] > 0) {
+                if (![_floatLabel alpha]) {
+                    [self toggleFloatLabel:UIFloatLabelAnimationTypeShow];
+                }
+            } else {
+                if ([_floatLabel alpha]) {
+                    [self toggleFloatLabel:UIFloatLabelAnimationTypeHide];
+                }
+            }
         }
-    } else {
-        if ([_floatLabel alpha]) {
-            [self toggleFloatLabel:UIFloatLabelAnimationTypeHide];
-        }
+        _storedText = self.text;
     }
 }
 
@@ -236,7 +252,7 @@
     [NSTimer scheduledTimerWithTimeInterval:duration target:self selector:@selector(animateClearingTextFieldWithArray:) userInfo:textArray repeats:YES];
 }
 
-- (void)absoluteFloatLabelOffset:(UIFloatLabelAnimationType)animationType
+- (void)setDynamicViewProperties:(UIFloatLabelAnimationType)animationType
 {
     _floatLabel.alpha = (animationType == UIFloatLabelAnimationTypeShow) ? 1.0f : 0.0f;
     CGFloat yOrigin = (animationType == UIFloatLabelAnimationTypeShow) ? 3.0f : _verticalPadding;
@@ -259,6 +275,20 @@
     }
 }
 
+#pragma mark - Properties
+
+- (void)setPlaceholderColor:(UIColor *)placeholderColor
+{
+    _placeholderColor = placeholderColor;
+    [self setPlaceholder:self.placeholder];
+}
+
+- (void)setPlaceholderFont:(UIFont *)placeholderFont
+{
+    _placeholderFont = placeholderFont;
+    [self setPlaceholder:self.placeholder];
+}
+
 #pragma mark - UITextField (Override)
 - (void)setText:(NSString *)text
 {
@@ -266,21 +296,50 @@
     
     // When textField is pre-populated, show non-animated version of floatLabel
     if ([text length] && !_storedText) {
-        [self absoluteFloatLabelOffset:UIFloatLabelAnimationTypeShow];
+        [self setDynamicViewProperties:UIFloatLabelAnimationTypeShow];
         _floatLabel.textColor = _floatLabelPassiveColor;
     }
 }
 
 - (void)setPlaceholder:(NSString *)placeholder
 {
+    self.placeholderAttributes = @{ NSForegroundColorAttributeName : self.placeholderColor,
+                                    NSFontAttributeName : self.placeholderFont };
     [super setPlaceholder:placeholder];
-    
-    
-    if ([placeholder length]) {
-        _floatLabel.text = placeholder;
+    [self applyPlaceholderText:placeholder];
+}
+
+- (void)setAttributedPlaceholder:(NSAttributedString *)attributedPlaceholder
+{
+    if ([super respondsToSelector:@selector(setAttributedPlaceholder:)]) {
+        [super setAttributedPlaceholder:attributedPlaceholder];
+        self.placeholderAttributes = [attributedPlaceholder attributesAtIndex:0 effectiveRange:0];
+        [self applyPlaceholderText:attributedPlaceholder.string];
+    }
+    else {
+        NSLog(@"This version of iOS does not support [UITextField setAttributedPlaceholder]");
+        [self doesNotRecognizeSelector:_cmd];
+    }
+}
+
+- (void)applyPlaceholderText:(NSString *)placeholderText
+{
+    if ([placeholderText length]) {
+        _floatLabel.text = placeholderText;
     }
     
     [_floatLabel sizeToFit];
+}
+
+- (void)drawPlaceholderInRect:(CGRect)rect
+{
+    //if we have attributes and we're able to draw with them, do so, otherwise defer to the default iOS implementation
+    if (self.placeholderAttributes && [self.placeholder respondsToSelector:@selector(drawInRect:withAttributes:)]) {
+        [self.placeholder drawInRect:rect withAttributes:self.placeholderAttributes];
+    }
+    else {
+        [super drawPlaceholderInRect:rect];
+    }
 }
 
 - (void)setTextAlignment:(NSTextAlignment)textAlignment
@@ -325,11 +384,10 @@
     [super layoutSubviews];
     [self setTextAlignment:[self textAlignment]];
     
-    if (![self isFirstResponder] && ![self.text length]) {
-        [self absoluteFloatLabelOffset:UIFloatLabelAnimationTypeHide];
-    } else {
-       [self absoluteFloatLabelOffset:UIFloatLabelAnimationTypeShow];
-    }
+    if ([self.text length])
+        [self setDynamicViewProperties:UIFloatLabelAnimationTypeShow];
+    else
+        [self setDynamicViewProperties:UIFloatLabelAnimationTypeHide];
 }
 
 #pragma mark - UIResponder (Override)
