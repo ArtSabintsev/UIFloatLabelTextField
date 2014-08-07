@@ -15,6 +15,7 @@
 @property (nonatomic, assign) CGFloat xOrigin;
 @property (nonatomic, assign) CGFloat horizontalPadding;
 @property (nonatomic, assign) CGFloat verticalPadding;
+@property NSDictionary *placeholderAttributes;
 
 @end
 
@@ -68,7 +69,7 @@
     // Reference Apple's clearButton and add animation
     [self setupClearTextFieldButton];
     
-    // Build floatLabel
+    [self setupPlaceholder];
     [self setupFloatLabel];
     
     // Enable default UIMenuController options
@@ -115,6 +116,12 @@
     
     // Add new target-action for clearTextFieldButton
     [_clearTextFieldButton addTarget:self action:@selector(clearTextField) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)setupPlaceholder
+{
+    _placeholderFont = [UIFont systemFontOfSize:12.0f];
+    _placeholderColor = [UIColor grayColor];
 }
 
 - (void)setupFloatLabel
@@ -268,6 +275,20 @@
     }
 }
 
+#pragma mark - Properties
+
+- (void)setPlaceholderColor:(UIColor *)placeholderColor
+{
+    _placeholderColor = placeholderColor;
+    [self setPlaceholder:self.placeholder];
+}
+
+- (void)setPlaceholderFont:(UIFont *)placeholderFont
+{
+    _placeholderFont = placeholderFont;
+    [self setPlaceholder:self.placeholder];
+}
+
 #pragma mark - UITextField (Override)
 - (void)setText:(NSString *)text
 {
@@ -282,20 +303,23 @@
 
 - (void)setPlaceholder:(NSString *)placeholder
 {
-    if ([self respondsToSelector:@selector(setAttributedPlaceholder:)]) {
-        [self setAttributedPlaceholder:[[NSAttributedString alloc] initWithString:placeholder attributes:@{NSForegroundColorAttributeName: self.floatLabelPassiveColor}]];
-    }
-    else {
-        [super setPlaceholder:placeholder];
-        [self applyPlaceholderText:placeholder];
-    }
-        
+    self.placeholderAttributes = @{ NSForegroundColorAttributeName : self.placeholderColor,
+                                    NSFontAttributeName : self.placeholderFont };
+    [super setPlaceholder:placeholder];
+    [self applyPlaceholderText:placeholder];
 }
 
 - (void)setAttributedPlaceholder:(NSAttributedString *)attributedPlaceholder
 {
-    [super setAttributedPlaceholder:attributedPlaceholder];
-    [self applyPlaceholderText:attributedPlaceholder.string];
+    if ([super respondsToSelector:@selector(setAttributedPlaceholder:)]) {
+        [super setAttributedPlaceholder:attributedPlaceholder];
+        self.placeholderAttributes = [attributedPlaceholder attributesAtIndex:0 effectiveRange:0];
+        [self applyPlaceholderText:attributedPlaceholder.string];
+    }
+    else {
+        NSLog(@"This version of iOS does not support [UITextField setAttributedPlaceholder]");
+        [self doesNotRecognizeSelector:_cmd];
+    }
 }
 
 - (void)applyPlaceholderText:(NSString *)placeholderText
@@ -305,6 +329,17 @@
     }
     
     [_floatLabel sizeToFit];
+}
+
+- (void)drawPlaceholderInRect:(CGRect)rect
+{
+    //if we have attributes and we're able to draw with them, do so, otherwise defer to the default iOS implementation
+    if (self.placeholderAttributes && [self.placeholder respondsToSelector:@selector(drawInRect:withAttributes:)]) {
+        [self.placeholder drawInRect:rect withAttributes:self.placeholderAttributes];
+    }
+    else {
+        [super drawPlaceholderInRect:rect];
+    }
 }
 
 - (void)setTextAlignment:(NSTextAlignment)textAlignment

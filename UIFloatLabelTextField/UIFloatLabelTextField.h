@@ -57,6 +57,20 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
 @property (nonatomic, strong) NSNumber  *floatLabelAnimationDuration UI_APPEARANCE_SELECTOR;
 
 /**
+ * The font for @c placeholder.
+ *
+ * Defaults to Helvetica Neue Bold 12.0f.
+ */
+@property (nonatomic, strong) UIFont    *placeholderFont UI_APPEARANCE_SELECTOR;
+
+/**
+ * The font for @c placeholder.
+ *
+ * Defaults to Helvetica Neue Bold 12.0f.
+ */
+@property (nonatomic, strong) UIColor    *placeholderColor UI_APPEARANCE_SELECTOR;
+
+/**
  * Disables the option to @a paste in the @c UIMenuController. 
  * This @c NSNumber value is converted to a @c BOOL.
  */
