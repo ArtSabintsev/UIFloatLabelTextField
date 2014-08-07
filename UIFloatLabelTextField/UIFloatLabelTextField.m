@@ -69,7 +69,6 @@
     // Reference Apple's clearButton and add animation
     [self setupClearTextFieldButton];
     
-    [self setupPlaceholder];
     [self setupFloatLabel];
     
     // Enable default UIMenuController options
@@ -116,12 +115,6 @@
     
     // Add new target-action for clearTextFieldButton
     [_clearTextFieldButton addTarget:self action:@selector(clearTextField) forControlEvents:UIControlEventTouchUpInside];
-}
-
-- (void)setupPlaceholder
-{
-    _placeholderFont = [UIFont systemFontOfSize:12.0f];
-    _placeholderColor = [UIColor grayColor];
 }
 
 - (void)setupFloatLabel
@@ -280,12 +273,18 @@
 - (void)setPlaceholderColor:(UIColor *)placeholderColor
 {
     _placeholderColor = placeholderColor;
+    if (!_placeholderFont)
+            _placeholderFont = [UIFont systemFontOfSize:12.0f];
+    
     [self setPlaceholder:self.placeholder];
 }
 
 - (void)setPlaceholderFont:(UIFont *)placeholderFont
 {
     _placeholderFont = placeholderFont;
+    if (!_placeholderColor)
+        _placeholderColor = [UIColor grayColor];
+    
     [self setPlaceholder:self.placeholder];
 }
 
@@ -303,8 +302,11 @@
 
 - (void)setPlaceholder:(NSString *)placeholder
 {
-    self.placeholderAttributes = @{ NSForegroundColorAttributeName : self.placeholderColor,
-                                    NSFontAttributeName : self.placeholderFont };
+    if (self.placeholderColor && self.placeholderFont) {
+        self.placeholderAttributes = @{ NSForegroundColorAttributeName : self.placeholderColor,
+                                        NSFontAttributeName : self.placeholderFont };
+    }
+    
     [super setPlaceholder:placeholder];
     [self applyPlaceholderText:placeholder];
 }
