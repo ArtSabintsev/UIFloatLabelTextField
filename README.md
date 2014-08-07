@@ -11,8 +11,8 @@ In 2013, [**Matt D. Smith**](http://twitter.com/mds) unveiled the **[Float Label
 ![Sample Gif of Library in Action](http://d13yacurqjgara.cloudfront.net/users/6410/screenshots/1254439/form-animation-_gif_.gif)
 
 Image credit: [Matt D. Smith](http://twitter.com/mds). 
-### Changelog (v1.0.12)
-- Fixed bug introduced in v1.0.11 that began showing float label before text was entered into the text field. 
+### Changelog (v1.0.13)
+- Incorporated some of the bugfixes in pull request #5 by @samw-bilue.
 
 ### Features
 - Works with all view `init` styles

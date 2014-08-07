@@ -148,7 +148,7 @@
 - (void)toggleFloatLabel:(UIFloatLabelAnimationType)animationType
 {
     // Placeholder
-    self.placeholder = (animationType == UIFloatLabelAnimationTypeShow) ? nil : [_floatLabel text];
+    self.placeholder = (animationType == UIFloatLabelAnimationTypeShow) ? @"" : [_floatLabel text];
     
     // Reference textAlignment to reset origin of textField and floatLabel
     _floatLabel.textAlignment = self.textAlignment = [self textAlignment];
@@ -157,7 +157,7 @@
     UIViewAnimationOptions easingOptions = (animationType == UIFloatLabelAnimationTypeShow) ? UIViewAnimationOptionCurveEaseOut : UIViewAnimationOptionCurveEaseIn;
     UIViewAnimationOptions combinedOptions = UIViewAnimationOptionBeginFromCurrentState | easingOptions;
     void (^animationBlock)(void) = ^{
-        [self absoluteFloatLabelOffset:animationType];
+        [self toggleFloatLabelProperties:animationType];
     };
     
     // Toggle floatLabel visibility via UIView animation
@@ -202,14 +202,17 @@
 
 - (void)textDidChange:(NSNotification *)notification
 {
-    if ([self.text length]) {
-        _storedText = [self text];
-        if (![_floatLabel alpha]) {
-            [self toggleFloatLabel:UIFloatLabelAnimationTypeShow];
-        }
-    } else {
-        if ([_floatLabel alpha]) {
-            [self toggleFloatLabel:UIFloatLabelAnimationTypeHide];
+    if (notification.object == self) {
+        if ([self.text length]) {
+            _storedText = [self text];
+            if (![_floatLabel alpha]) {
+                [self toggleFloatLabel:UIFloatLabelAnimationTypeShow];
+            }
+        } else {
+            if ([_floatLabel alpha]) {
+                [self toggleFloatLabel:UIFloatLabelAnimationTypeHide];
+            }
+            _storedText = @"";
         }
     }
 }
@@ -236,7 +239,7 @@
     [NSTimer scheduledTimerWithTimeInterval:duration target:self selector:@selector(animateClearingTextFieldWithArray:) userInfo:textArray repeats:YES];
 }
 
-- (void)absoluteFloatLabelOffset:(UIFloatLabelAnimationType)animationType
+- (void)toggleFloatLabelProperties:(UIFloatLabelAnimationType)animationType
 {
     _floatLabel.alpha = (animationType == UIFloatLabelAnimationTypeShow) ? 1.0f : 0.0f;
     CGFloat yOrigin = (animationType == UIFloatLabelAnimationTypeShow) ? 3.0f : _verticalPadding;
@@ -266,7 +269,7 @@
     
     // When textField is pre-populated, show non-animated version of floatLabel
     if ([text length] && !_storedText) {
-        [self absoluteFloatLabelOffset:UIFloatLabelAnimationTypeShow];
+        [self toggleFloatLabelProperties:UIFloatLabelAnimationTypeShow];
         _floatLabel.textColor = _floatLabelPassiveColor;
     }
 }
@@ -326,9 +329,9 @@
     [self setTextAlignment:[self textAlignment]];
     
     if (![self isFirstResponder] && ![self.text length]) {
-        [self absoluteFloatLabelOffset:UIFloatLabelAnimationTypeHide];
+        [self toggleFloatLabelProperties:UIFloatLabelAnimationTypeHide];
     } else if ([self.text length]) {
-       [self absoluteFloatLabelOffset:UIFloatLabelAnimationTypeShow];
+       [self toggleFloatLabelProperties:UIFloatLabelAnimationTypeShow];
     }
 }
 
