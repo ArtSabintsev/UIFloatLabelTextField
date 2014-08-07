@@ -12,7 +12,7 @@ In 2013, [**Matt D. Smith**](http://twitter.com/mds) unveiled the **[Float Label
 
 Image credit: [Matt D. Smith](http://twitter.com/mds). 
 ### Changelog (v1.0.13)
-- Incorporated some of the bugfixes in pull request #5 by @samw-bilue.
+- Incorporated some of the bugfixes in pull request [#5](https://github.com/ArtSabintsev/UIFloatLabelTextField/pull/5) by [samw-bilue](http://github.com/samw-bilue).
 
 ### Features
 - Works with all view `init` styles
@@ -32,7 +32,7 @@ pod 'UIFloatLabelTextField'
 ```
 
 ### Usage
-Check out `UIFloatLabelTextField.h` for a full list of editable properties. Also, check out the **UIFloatLabelSampleApp** for an example impementation of the applicatio
+Check out `UIFloatLabelTextField.h` for a full list of editable properties. Also, check out the **UIFloatLabelSampleApp** for an example impementation of the application.
 
 ### Credit
 I want to credit [**Jared Verdi**](http://twitter.com/jverdi) for developing the first iOS implementation of this pattern in his [**JVFloatLabeledTextField**](https://github.com/jverdi/JVFloatLabeledTextField) project. I used it as a reference to make this version, but executed many aspects differently. I also added a few other features that I personally needed, and plan on enhancing this library overtime.
