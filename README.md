@@ -12,7 +12,7 @@ In 2013, [**Matt D. Smith**](http://twitter.com/mds) unveiled the **[Float Label
 
 Image credit: [Matt D. Smith](http://twitter.com/mds). 
 ### Changelog (v1.0.14)
-- THe `UITextFielDelegate` method `textFieldShouldClear:` is now called when the clear button is pressed.
+- THe `UITextFieldDelegate` method `textFieldShouldClear:` is now called when the clear button is pressed.
 
 ### Features
 - Works with all view `init` styles
