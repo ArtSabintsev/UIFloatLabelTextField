@@ -219,6 +219,11 @@
 
 - (void)clearTextField
 {
+    // Call UITextFieldDelegate's 'textFieldShouldClear' method if delegate is set
+    if ([self delegate]) {
+        [self.delegate textFieldShouldClear:self];
+    }
+    
     // Create array, where each index contains one character from textField
     NSMutableArray *textArray = [@[] mutableCopy];
     NSUInteger i = 0;
