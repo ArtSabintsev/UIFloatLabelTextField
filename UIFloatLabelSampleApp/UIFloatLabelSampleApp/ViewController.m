@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "UIFloatLabelTextField.h"
 
-@interface ViewController ()
+@interface ViewController () <UITextFieldDelegate>
 
 @end
 
@@ -30,6 +30,7 @@
     firstNameTextField.floatLabelActiveColor = [UIColor orangeColor];
     firstNameTextField.placeholder = @"First Name";
     firstNameTextField.text = @"Arthur";
+    firstNameTextField.delegate = self;
     [self.view addSubview:firstNameTextField];
     
     UIFloatLabelTextField *lastNameTextField = [UIFloatLabelTextField new];

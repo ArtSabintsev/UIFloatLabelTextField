@@ -220,7 +220,7 @@
 - (void)clearTextField
 {
     // Call UITextFieldDelegate's 'textFieldShouldClear' method if delegate is set
-    if ([self delegate]) {
+    if ([self.delegate respondsToSelector:@selector(textFieldShouldClear:)]) {
         [self.delegate textFieldShouldClear:self];
     }
     
