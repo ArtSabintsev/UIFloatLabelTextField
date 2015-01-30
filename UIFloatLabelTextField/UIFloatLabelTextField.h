@@ -49,12 +49,21 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
 @property (nonatomic, strong) UIColor *floatLabelActiveColor UI_APPEARANCE_SELECTOR;
 
 /**
- * The duration for all animations. 
- * This @c NSNumber value is converted to a @c CGFloat.
+ * The animation duration when animating-in the float label.
+ * This @c NSNumber value is converted to a @c float.
  *
- * Defaults to 0.5 seconds.
+ * Defaults to 0.25 seconds.
  */
-@property (nonatomic, strong) NSNumber *floatLabelAnimationDuration UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) NSNumber *floatLabelShowAnimationDuration UI_APPEARANCE_SELECTOR;
+
+/**
+ * The animation duration when animating-out the float label.
+ * This @c NSNumber value is converted to a @c float.
+ *
+ * Defaults to 0.05 seconds.
+ */
+@property (nonatomic, strong) NSNumber *floatLabelHideAnimationDuration UI_APPEARANCE_SELECTOR;
+
 
 /**
  * Disables the option to @a paste in the @c UIMenuController. 

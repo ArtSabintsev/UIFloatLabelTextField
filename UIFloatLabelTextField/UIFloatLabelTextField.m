@@ -8,13 +8,14 @@
 
 #import "UIFloatLabelTextField.h"
 
+
+
 @interface UIFloatLabelTextField ()
 
 @property (nonatomic, copy) NSString *storedText;
 @property (nonatomic, strong) UIButton *clearTextFieldButton;
 @property (nonatomic, assign) CGFloat xOrigin;
 @property (nonatomic, assign) CGFloat horizontalPadding;
-@property (nonatomic, assign) CGFloat verticalPadding;
 
 @end
 
@@ -79,7 +80,6 @@
 {
     // Textfield Padding
     _horizontalPadding = 5.0f;
-    _verticalPadding = 0.5f * CGRectGetHeight([self frame]);
     
     // Text Alignment
     [self setTextAlignment:NSTextAlignmentLeft];
@@ -124,7 +124,7 @@
     _floatLabel.textColor = [UIColor blackColor];
     _floatLabel.font =[UIFont boldSystemFontOfSize:12.0f];
     _floatLabel.alpha = 0.0f;
-    [_floatLabel setCenter:CGPointMake(_xOrigin, _verticalPadding)];
+    [_floatLabel setCenter:CGPointMake(_xOrigin, 0.0f)];
     [self addSubview:_floatLabel];
     
     // colors
@@ -132,7 +132,8 @@
     _floatLabelActiveColor = [UIColor blueColor];
     
     // animationDuration
-    _floatLabelAnimationDuration = @0.25;
+    _floatLabelShowAnimationDuration = @0.25f;
+    _floatLabelHideAnimationDuration = @0.05f;
 }
 
 - (void)setupMenuController
@@ -161,7 +162,8 @@
     };
     
     // Toggle floatLabel visibility via UIView animation
-    [UIView animateWithDuration:[_floatLabelAnimationDuration floatValue]
+    CGFloat duration = (animationType == UIFloatLabelAnimationTypeShow) ? [_floatLabelShowAnimationDuration floatValue] : [_floatLabelHideAnimationDuration floatValue];
+    [UIView animateWithDuration:duration
                           delay:0.0f
                         options:combinedOptions
                      animations:animationBlock
@@ -237,7 +239,7 @@
     self.text = _storedText;
     
     // Calculate duraiton based on _floatLabelAnimationDuration and number letters in textField
-    CGFloat duration = [_floatLabelAnimationDuration floatValue] / [textArray count];
+    CGFloat duration = [_floatLabelHideAnimationDuration floatValue] / [textArray count];
     
     // Perform animation
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
@@ -247,24 +249,11 @@
 - (void)toggleFloatLabelProperties:(UIFloatLabelAnimationType)animationType
 {
     _floatLabel.alpha = (animationType == UIFloatLabelAnimationTypeShow) ? 1.0f : 0.0f;
-    CGFloat yOrigin = (animationType == UIFloatLabelAnimationTypeShow) ? 3.0f : _verticalPadding;
+    CGFloat yOrigin = (animationType == UIFloatLabelAnimationTypeShow) ? 3.0f : 0.5f * CGRectGetHeight([self frame]);
     _floatLabel.frame = CGRectMake(_xOrigin,
                                    yOrigin,
                                    CGRectGetWidth([_floatLabel frame]),
                                    CGRectGetHeight([_floatLabel frame]));
-}
-
-- (void)updateRectForTextFieldGeneratedViaAutoLayout
-{
-    _verticalPadding = 0.5f * CGRectGetHeight([self frame]);
-    
-    // Do not shift the frame if textField is pre-populated
-    if (![self.text length]) {
-        _floatLabel.frame = CGRectMake(_xOrigin,
-                                       _verticalPadding,
-                                       CGRectGetWidth([_floatLabel frame]),
-                                       CGRectGetHeight([_floatLabel frame]));
-    }
 }
 
 #pragma mark - UITextField (Override)
@@ -349,10 +338,7 @@
      verticalPadding must be manually set if textField was initialized
      using NSAutoLayout constraints
      */
-    if (!_verticalPadding) {
-        [self updateRectForTextFieldGeneratedViaAutoLayout];
-    }
-    
+ 
     _floatLabel.textColor = _floatLabelActiveColor;
     _storedText = [self text];
     
