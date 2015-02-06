@@ -2,11 +2,11 @@
 ### A subclassed UITextField that implements the Float Label UI design pattern. 
 ___
 
-### About
-In 2013, [**Matt D. Smith**](http://twitter.com/mds) unveiled the **[Float Label](http://www.floatlabel.com)** user interface design pattern. In short, it retains a text field's placeholder above said text field as a *floating label*. This label is brightly colored when the field is active, and dimly colored when a user has finished editing that field. 
-
 ### Note
 If you are looking for the `UITextView` equivalent of this class, please visit my [UIFloatLabelTextView](http://www.github.com/ArtSabintsev/UIFloatLabelTextView) repository.
+
+### About
+In 2013, [**Matt D. Smith**](http://twitter.com/mds) unveiled the **[Float Label](http://www.floatlabel.com)** user interface design pattern. In short, it retains a text field's placeholder above said text field as a *floating label*. This label is brightly colored when the field is active, and dimly colored when a user has finished editing that field. 
 
 ![Sample Gif of Library in Action](http://d13yacurqjgara.cloudfront.net/users/6410/screenshots/1254439/form-animation-_gif_.gif)
 
