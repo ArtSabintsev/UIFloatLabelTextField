@@ -64,34 +64,51 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
  */
 @property (nonatomic, strong) NSNumber *floatLabelHideAnimationDuration UI_APPEARANCE_SELECTOR;
 
+/**
+ * Dismiss the keyboard when interacting with the textField clear button (found on one edge of the textField).
+ * This @c NSNumber value is converted to a @c BOOL.
+ *
+ * Defaults to NO.
+ */
+@property (nonatomic, assign) NSNumber *dismissKeyboardWhenClearingTextField UI_APPEARANCE_SELECTOR;
 
 /**
  * Disables the option to @a paste in the @c UIMenuController. 
  * This @c NSNumber value is converted to a @c BOOL.
+ *
+ * Defaults to YES.
  */
 @property (nonatomic, assign) NSNumber *pastingEnabled UI_APPEARANCE_SELECTOR;
 
 /**
  * Disables the option to @a copy in the @c UIMenuController.
  * This @c NSNumber value is converted to a @c BOOL.
+ *
+ * Defaults to YES.
  */
 @property (nonatomic, assign) NSNumber *copyingEnabled UI_APPEARANCE_SELECTOR;
 
 /**
  * Disables the option to @a cut in the @c UIMenuController.
  * This @c NSNumber value is converted to a @c BOOL.
+ *
+ * Defaults to YES.
  */
 @property (nonatomic, assign) NSNumber *cuttingEnabled UI_APPEARANCE_SELECTOR;
 
 /**
  * Disables the option to @a select in the @c UIMenuController.
  * This @c NSNumber value is converted to a @c BOOL.
+ *
+ * Defaults to YES.
  */
 @property (nonatomic, assign) NSNumber *selectEnabled UI_APPEARANCE_SELECTOR;
 
 /**
  * Disables the option to @a select-all in the @c UIMenuController.
  * This @c NSNumber value is converted to a @c BOOL.
+ *
+ * Defaults to YES.
  */
 @property (nonatomic, assign) NSNumber *selectAllEnabled UI_APPEARANCE_SELECTOR;
 

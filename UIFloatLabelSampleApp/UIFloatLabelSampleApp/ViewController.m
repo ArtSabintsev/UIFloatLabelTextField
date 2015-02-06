@@ -42,6 +42,7 @@
     UIFloatLabelTextField *twitterTextField = [UIFloatLabelTextField new];
     [twitterTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
     twitterTextField.placeholder = @"Twitter Moniker";
+    twitterTextField.dismissKeyboardWhenClearingTextField = @YES;
     [self.view addSubview:twitterTextField];
 
     // Horizontal

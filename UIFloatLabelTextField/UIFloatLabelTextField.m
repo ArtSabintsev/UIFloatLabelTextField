@@ -98,6 +98,9 @@
 
 - (void)setupClearTextFieldButton
 {
+    // A boolean that toggles the state of the keyboard after the clear-text button is pressed.
+    _dismissKeyboardWhenClearingTextField = @NO;
+    
     // Create selector for Apple's built-in UITextField button - clearButton
     SEL clearButtonSelector = NSSelectorFromString(@"clearButton");
     
@@ -189,7 +192,10 @@
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
         [timer invalidate];
         [self toggleFloatLabel:UIFloatLabelAnimationTypeHide];
-        [self resignFirstResponder];
+        
+        if ([_dismissKeyboardWhenClearingTextField boolValue]) {
+            [self resignFirstResponder];
+        }
     }
 }
 

@@ -2,18 +2,19 @@
 ### A subclassed UITextField that implements the Float Label UI design pattern. 
 ___
 
-### Note
-If you are looking for the `UITextView` equivalent of this class, please visit my [UIFloatLabelTextView](http://www.github.com/ArtSabintsev/UIFloatLabelTextView) repository.
-
 ### About
 In 2013, [**Matt D. Smith**](http://twitter.com/mds) unveiled the **[Float Label](http://www.floatlabel.com)** user interface design pattern. In short, it retains a text field's placeholder above said text field as a *floating label*. This label is brightly colored when the field is active, and dimly colored when a user has finished editing that field. 
+
+### Note
+If you are looking for the `UITextView` equivalent of this class, please visit my [UIFloatLabelTextView](http://www.github.com/ArtSabintsev/UIFloatLabelTextView) repository.
 
 ![Sample Gif of Library in Action](http://d13yacurqjgara.cloudfront.net/users/6410/screenshots/1254439/form-animation-_gif_.gif)
 
 Image credit: [Matt D. Smith](http://twitter.com/mds). 
-### Changelog (v1.1.0)
-- Removed code that caused an *ugly* and unnecessary vertical offset
-- Replaced `UIFloatLabelAnimationDuration` with `UIFloatLabelShowAnimationDuration` and `UIFloatLabelHideAnimationDuration`
+### Changelog (v1.1.1)
+- By default, the keyboard no longer disappears when pressing the clear-text button. 
+	- Before v1.1.1, the keyboard would disappear.  
+	- A new variable was introduced to toggle the state of the keyboard after pressing the clear-text button.
 
 ### Features
 - Works with all view `init` styles
@@ -36,7 +37,7 @@ pod 'UIFloatLabelTextField'
 Check out `UIFloatLabelTextField.h` for a full list of editable properties. Also, check out the **UIFloatLabelSampleApp** for an example impementation of the application.
 
 ### Credit
-I want to credit [**Jared Verdi**](http://twitter.com/jverdi) for developing the first iOS implementation of this pattern in his [**JVFloatLabeledTextField**](https://github.com/jverdi/JVFloatLabeledTextField) project. I used it as a reference to make this version, but executed many aspects differently. I also added a few other features that I personally needed, and plan on enhancing this library overtime.
+I want to credit [**Jared Verdi**](http://twitter.com/jverdi) for developing the first iOS implementation of this pattern in his [**JVFloatLabeledTextField**](https://github.com/jverdi/JVFloatLabeledTextField) project. I used it as a reference to make this version, but executed most aspects differently. I also added many other features that I personally needed, and plan on continuing to enhance this library over time.
 
 ### Created and maintained by
 [Arthur Ariel Sabintsev](http://www.sabintsev.com/) 
