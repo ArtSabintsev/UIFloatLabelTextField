@@ -108,16 +108,18 @@
     IMP clearButtonImplementation = [self methodForSelector:clearButtonSelector];
     
     // Create function pointer that returns UIButton from implementation of method that contains clearButtonSelector
-    UIButton * (* clearButtonFunctionPointer)(id, SEL) = (void *)clearButtonImplementation;
+    UIButton * (* clearButtonFunctionPointer)(id, SEL) = (UIButton *(*)(id, SEL))clearButtonImplementation;
     
     // Set clearTextFieldButton reference to "clearButton" from clearButtonSelector
     _clearTextFieldButton = clearButtonFunctionPointer(self, clearButtonSelector);
     
-    // Remove all clearTextFieldButton target-actions (e.g., Apple's standard clearButton actions)
-    [self.clearTextFieldButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
-    
-    // Add new target-action for clearTextFieldButton
-    [_clearTextFieldButton addTarget:self action:@selector(clearTextField) forControlEvents:UIControlEventTouchUpInside];
+    if (_clearTextFieldButton) {
+        // Remove all clearTextFieldButton target-actions (e.g., Apple's standard clearButton actions)
+        [self.clearTextFieldButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
+        
+        // Add new target-action for clearTextFieldButton
+        [_clearTextFieldButton addTarget:self action:@selector(clearTextField) forControlEvents:UIControlEventTouchUpInside];
+    }
 }
 
 - (void)setupFloatLabel
