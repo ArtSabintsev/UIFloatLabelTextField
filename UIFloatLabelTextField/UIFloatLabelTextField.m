@@ -47,6 +47,7 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         [self setup];
+        [self setPlaceholder:self.placeholder];
     }
     
     return self;
@@ -86,7 +87,7 @@
     
     // Enable clearButton when textField becomes firstResponder
     self.clearButtonMode = UITextFieldViewModeWhileEditing;
-
+    
     /*
      Observer for replicating `textField:shouldChangeCharactersInRange:replacementString:` UITextFieldDelegate method,
      without explicitly using UITextFieldDelegate.
@@ -204,10 +205,8 @@
 #pragma mark - Helpers
 - (UIEdgeInsets)floatLabelInsets
 {
-    return UIEdgeInsetsMake(_floatLabel.font.lineHeight,
-                            _horizontalPadding,
-                            0.0f,
-                            _horizontalPadding);
+    CGFloat top = [self.text length] ? 5.0f : 0.0f;
+    return UIEdgeInsetsMake(top, _horizontalPadding, 0.0f, _horizontalPadding);
 }
 
 - (void)textDidChange:(NSNotification *)notification
@@ -280,7 +279,6 @@
 {
     [super setPlaceholder:placeholder];
     
-    
     if ([placeholder length]) {
         _floatLabel.text = placeholder;
     }
@@ -333,7 +331,7 @@
     if (![self isFirstResponder] && ![self.text length]) {
         [self toggleFloatLabelProperties:UIFloatLabelAnimationTypeHide];
     } else if ([self.text length]) {
-       [self toggleFloatLabelProperties:UIFloatLabelAnimationTypeShow];
+        [self toggleFloatLabelProperties:UIFloatLabelAnimationTypeShow];
     }
 }
 
@@ -346,7 +344,7 @@
      verticalPadding must be manually set if textField was initialized
      using NSAutoLayout constraints
      */
- 
+    
     _floatLabel.textColor = _floatLabelActiveColor;
     _storedText = [self text];
     

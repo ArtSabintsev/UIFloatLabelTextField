@@ -11,9 +11,9 @@ In 2013, [**Matt D. Smith**](http://twitter.com/mds) unveiled the **[Float Label
 ![Sample Gif of Library in Action](http://d13yacurqjgara.cloudfront.net/users/6410/screenshots/1254439/form-animation-_gif_.gif)
 
 Image credit: [Matt D. Smith](http://twitter.com/mds). 
-### Changelog (v1.1.2)
-- Minor change to how clear button is accessed and modified 
-	- Thanks to [Tchelow](http://github.com/Tchelow)'s answer in [Issue #9](https://github.com/ArtSabintsev/UIFloatLabelTextField/issues/9#issuecomment-73449495)
+### Changelog (v1.2.0)
+- Fixed issues with floatLabel not properly appearing if text field was initialzied via xib or storyboard.
+- Improved how drawing rectangle is drawn during various states active, passive, editing, and non-editing states of text field.
 
 ### Features
 - Works with all view `init` styles
