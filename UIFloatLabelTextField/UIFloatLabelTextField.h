@@ -73,6 +73,13 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
 @property (nonatomic, assign) NSNumber *dismissKeyboardWhenClearingTextField UI_APPEARANCE_SELECTOR;
 
 /**
+ * THe amount of padding to add to the left and right boundaries of the text field.
+ *
+ * Defaults to 5.0.
+ */
+@property (nonatomic, assign) CGFloat horizontalPadding UI_APPEARANCE_SELECTOR;
+
+/**
  * Disables the option to @a paste in the @c UIMenuController. 
  * This @c NSNumber value is converted to a @c BOOL.
  *

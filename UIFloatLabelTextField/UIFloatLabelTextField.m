@@ -8,14 +8,11 @@
 
 #import "UIFloatLabelTextField.h"
 
-
-
 @interface UIFloatLabelTextField ()
 
 @property (nonatomic, copy) NSString *storedText;
 @property (nonatomic, strong) UIButton *clearTextFieldButton;
 @property (nonatomic, assign) CGFloat xOrigin;
-@property (nonatomic, assign) CGFloat horizontalPadding;
 
 @end
 
