@@ -120,6 +120,13 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
 @property (nonatomic, assign) NSNumber *selectAllEnabled UI_APPEARANCE_SELECTOR;
 
 /**
+ * Enable the float label animation when becoming first responder
+ *
+ * Defaults to NO.
+ */
+@property (nonatomic, assign) NSNumber *toggleOnFirstResponder UI_APPEARANCE_SELECTOR;
+
+/**
  Toggles the float label using an animation
  @param animationType The desired animation (and final state) for the float label.
  */
