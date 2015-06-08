@@ -137,6 +137,8 @@
     // animationDuration
     _floatLabelShowAnimationDuration = @0.25f;
     _floatLabelHideAnimationDuration = @0.05f;
+    
+    _toggleOnFirstResponder = @NO;
 }
 
 - (void)setupMenuController
@@ -345,6 +347,9 @@
     _floatLabel.textColor = _floatLabelActiveColor;
     _storedText = [self text];
     
+    if ([_toggleOnFirstResponder isEqual:@YES])
+        [self toggleFloatLabel:UIFloatLabelAnimationTypeShow];
+    
     return YES;
 }
 
@@ -355,6 +360,9 @@
     }
     
     [super resignFirstResponder];
+    
+    if ([_toggleOnFirstResponder isEqual:@YES])
+        [self toggleFloatLabel:UIFloatLabelAnimationTypeHide];
     
     return YES;
 }
