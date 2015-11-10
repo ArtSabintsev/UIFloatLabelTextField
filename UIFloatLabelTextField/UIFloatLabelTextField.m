@@ -317,6 +317,7 @@
 {
     _floatLabelFont = floatLabelFont;
     _floatLabel.font = _floatLabelFont;
+    [_floatLabel sizeToFit];
 }
 
 #pragma mark - UIView (Override)
