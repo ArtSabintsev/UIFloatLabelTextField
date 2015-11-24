@@ -336,28 +336,35 @@
 #pragma mark - UIResponder (Override)
 -(BOOL)becomeFirstResponder
 {
-    [super becomeFirstResponder];
+    if ([super becomeFirstResponder]) {
+        /*
+         verticalPadding must be manually set if textField was initialized
+         using NSAutoLayout constraints
+         */
+        
+        _floatLabel.textColor = _floatLabelActiveColor;
+        _storedText = [self text];
+        
+        return YES;
+    } else {
+        return NO;
+    }
     
-    /*
-     verticalPadding must be manually set if textField was initialized
-     using NSAutoLayout constraints
-     */
-    
-    _floatLabel.textColor = _floatLabelActiveColor;
-    _storedText = [self text];
-    
-    return YES;
 }
 
 - (BOOL)resignFirstResponder
 {
-    if ([_floatLabel.text length]) {
-        _floatLabel.textColor = _floatLabelPassiveColor;
+    if ([self canResignFirstResponder]) {
+        if ([_floatLabel.text length]) {
+            _floatLabel.textColor = _floatLabelPassiveColor;
+        }
+        
+        [super resignFirstResponder];
+        
+        return YES;
+    } else {
+        return NO;
     }
-    
-    [super resignFirstResponder];
-    
-    return YES;
 }
 
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender
