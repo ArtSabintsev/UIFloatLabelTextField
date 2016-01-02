@@ -30,7 +30,7 @@ pod 'UIFloatLabelTextField'
 ```
 
 ## Setup
-Check out `UIFloatLabelTextField.h` for a full list of editable properties. Also, check out the **UIFloatLabelSampleApp** for an example impementation of the application.
+Check out `UIFloatLabelTextField.h` for a full list of editable properties. Also, check out the **UIFloatLabelSampleApp** for an example implementation of the application.
 
 ## Credit
 I want to credit [**Jared Verdi**](http://twitter.com/jverdi) for developing the first iOS implementation of this pattern in his [**JVFloatLabeledTextField**](https://github.com/jverdi/JVFloatLabeledTextField) project. I used it as a reference to make this version, but executed most aspects differently. I also added many other features that I personally needed, and plan on continuing to enhance this library over time.
