@@ -227,7 +227,10 @@
 {
     // Call UITextFieldDelegate's 'textFieldShouldClear' method if delegate is set
     if ([self.delegate respondsToSelector:@selector(textFieldShouldClear:)]) {
-        [self.delegate textFieldShouldClear:self];
+        BOOL shouldClear = [self.delegate textFieldShouldClear:self];
+        if (!shouldClear) {
+            return;
+        }
     }
     
     // Create array, where each index contains one character from textField
