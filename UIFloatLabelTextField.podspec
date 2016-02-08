@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
   s.name                = "UIFloatLabelTextField"
-  s.version             = "1.2.4"
+  s.version             = "1.2.5"
   s.summary             = "A subclassed UITextField that implements the Float Label UI design pattern."
   s.homepage            = "https://github.com/ArtSabintsev/UIFloatLabelTextField"
-  s.platform            = :ios, '7.0'
+  s.platform            = :ios, '8.0'
   s.source              = { :git => "https://github.com/ArtSabintsev/UIFloatLabelTextField.git", :tag => s.version.to_s }
   s.source_files        = 'UIFloatLabelTextField/*.{h,m}'
   s.requires_arc        = true
