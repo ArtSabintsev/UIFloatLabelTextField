@@ -25,8 +25,15 @@ Image credit: [Matt D. Smith](http://twitter.com/mds).
 	- Animation when clearing text
 
 ## Installation
-```
+
+### CococaPods
+``` ruby
 pod 'UIFloatLabelTextField'
+```
+
+### Carthage
+``` swift
+github "ArtSabintsev/UIFloatLabelTextField"
 ```
 
 ## Setup
