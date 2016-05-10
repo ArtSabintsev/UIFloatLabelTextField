@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                = "UIFloatLabelTextField"
-  s.version             = "1.2.5"
+  s.version             = "1.2.6"
   s.summary             = "A subclassed UITextField that implements the Float Label UI design pattern."
   s.homepage            = "https://github.com/ArtSabintsev/UIFloatLabelTextField"
   s.platform            = :ios, '8.0'
