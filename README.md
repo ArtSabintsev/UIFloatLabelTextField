@@ -1,5 +1,8 @@
 # UIFloatLabelTextField
+
 ### A subclassed UITextField that implements the Float Label UI design pattern.
+
+![Cocoapods](https://img.shields.io/cocoapods/v/UIFloatLabelTextField.svg) ![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)
 ___
 
 ## Note
