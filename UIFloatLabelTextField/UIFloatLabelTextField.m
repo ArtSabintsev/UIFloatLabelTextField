@@ -305,6 +305,13 @@
     }
 }
 
+- (void)setDisableClearButton:(BOOL)disableClearButton
+{
+    _disableClearButton = disableClearButton;
+    
+    self.clearButtonMode = (self.disableClearButton) ? UITextFieldViewModeNever : UITextFieldViewModeWhileEditing;
+}
+
 - (CGRect)textRectForBounds:(CGRect)bounds
 {
     return UIEdgeInsetsInsetRect([super textRectForBounds:bounds], [self floatLabelInsets]);
