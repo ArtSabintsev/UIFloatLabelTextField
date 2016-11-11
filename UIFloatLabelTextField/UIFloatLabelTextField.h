@@ -126,12 +126,12 @@ typedef NS_ENUM(NSUInteger, UIFloatLabelAnimationType)
 @property (nonatomic, assign) NSNumber *selectAllEnabled UI_APPEARANCE_SELECTOR;
 
 /**
- * Hides clear button.
+ * Hides the textField's clear button.
  * This @c NSNumber value is converted to a @c BOOL.
  *
  * Defaults to NO.
  */
-@property (nonatomic) BOOL disableClearButton UI_APPEARANCE_SELECTOR;
+@property (nonatomic) NSNumber *disableClearButton UI_APPEARANCE_SELECTOR;
 
 /**
  Toggles the float label using an animation

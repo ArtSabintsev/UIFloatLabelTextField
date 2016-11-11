@@ -7,11 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		550697DE1C68576D008C5BAF /* UIFloatLabelTextField.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 550697D71C68576D008C5BAF /* UIFloatLabelTextField.framework */; };
-		550697DF1C68576D008C5BAF /* UIFloatLabelTextField.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 550697D71C68576D008C5BAF /* UIFloatLabelTextField.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		550697E41C685775008C5BAF /* UIFloatLabelTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E648D9C18D2A53B00A892FB /* UIFloatLabelTextField.m */; };
-		550697E51C685785008C5BAF /* UIFloatLabelTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E648D9B18D2A53B00A892FB /* UIFloatLabelTextField.h */; };
 		55CAE8171C6857CA0051023A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55CAE8161C6857CA0051023A /* Launch Screen.storyboard */; };
+		8E371FDB1DD57A7E00823BC0 /* UIFloatLabelTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E371FDA1DD57A7E00823BC0 /* UIFloatLabelTextField.m */; };
 		8E648D6618D2A4FE00A892FB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E648D6518D2A4FE00A892FB /* Foundation.framework */; };
 		8E648D6818D2A4FE00A892FB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E648D6718D2A4FE00A892FB /* CoreGraphics.framework */; };
 		8E648D6A18D2A4FE00A892FB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E648D6918D2A4FE00A892FB /* UIKit.framework */; };
@@ -22,16 +19,6 @@
 		8E648D7E18D2A4FE00A892FB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E648D7D18D2A4FE00A892FB /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		550697DC1C68576D008C5BAF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8E648D5A18D2A4FE00A892FB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 550697D61C68576D008C5BAF;
-			remoteInfo = UIFloatLabelTextField;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		550697E31C68576D008C5BAF /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -39,7 +26,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				550697DF1C68576D008C5BAF /* UIFloatLabelTextField.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -47,9 +33,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		550697D71C68576D008C5BAF /* UIFloatLabelTextField.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIFloatLabelTextField.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		550697DB1C68576D008C5BAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55CAE8161C6857CA0051023A /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		8E371FD91DD57A7E00823BC0 /* UIFloatLabelTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFloatLabelTextField.h; sourceTree = "<group>"; };
+		8E371FDA1DD57A7E00823BC0 /* UIFloatLabelTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFloatLabelTextField.m; sourceTree = "<group>"; };
 		8E648D6218D2A4FE00A892FB /* UIFloatLabelSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIFloatLabelSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E648D6518D2A4FE00A892FB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8E648D6718D2A4FE00A892FB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -63,23 +49,13 @@
 		8E648D7A18D2A4FE00A892FB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		8E648D7B18D2A4FE00A892FB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8E648D7D18D2A4FE00A892FB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		8E648D9B18D2A53B00A892FB /* UIFloatLabelTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIFloatLabelTextField.h; path = ../../UIFloatLabelTextField/UIFloatLabelTextField.h; sourceTree = "<group>"; };
-		8E648D9C18D2A53B00A892FB /* UIFloatLabelTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIFloatLabelTextField.m; path = ../../UIFloatLabelTextField/UIFloatLabelTextField.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		550697D31C68576D008C5BAF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8E648D5F18D2A4FE00A892FB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				550697DE1C68576D008C5BAF /* UIFloatLabelTextField.framework in Frameworks */,
 				8E648D6818D2A4FE00A892FB /* CoreGraphics.framework in Frameworks */,
 				8E648D6A18D2A4FE00A892FB /* UIKit.framework in Frameworks */,
 				8E648D6618D2A4FE00A892FB /* Foundation.framework in Frameworks */,
@@ -89,21 +65,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		550697D81C68576D008C5BAF /* UIFloatLabelTextField */ = {
+		8E371FD81DD57A7E00823BC0 /* UIFloatLabelTextField */ = {
 			isa = PBXGroup;
 			children = (
-				8E648D9B18D2A53B00A892FB /* UIFloatLabelTextField.h */,
-				8E648D9C18D2A53B00A892FB /* UIFloatLabelTextField.m */,
-				550697DB1C68576D008C5BAF /* Info.plist */,
+				8E371FD91DD57A7E00823BC0 /* UIFloatLabelTextField.h */,
+				8E371FDA1DD57A7E00823BC0 /* UIFloatLabelTextField.m */,
 			);
-			path = UIFloatLabelTextField;
+			name = UIFloatLabelTextField;
+			path = ../../UIFloatLabelTextField;
 			sourceTree = "<group>";
 		};
 		8E648D5918D2A4FE00A892FB = {
 			isa = PBXGroup;
 			children = (
 				8E648D6B18D2A4FE00A892FB /* UIFloatLabelSampleApp */,
-				550697D81C68576D008C5BAF /* UIFloatLabelTextField */,
 				8E648D6418D2A4FE00A892FB /* Frameworks */,
 				8E648D6318D2A4FE00A892FB /* Products */,
 			);
@@ -113,7 +88,6 @@
 			isa = PBXGroup;
 			children = (
 				8E648D6218D2A4FE00A892FB /* UIFloatLabelSampleApp.app */,
-				550697D71C68576D008C5BAF /* UIFloatLabelTextField.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,6 +105,7 @@
 		8E648D6B18D2A4FE00A892FB /* UIFloatLabelSampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				8E371FD81DD57A7E00823BC0 /* UIFloatLabelTextField */,
 				8E648D7418D2A4FE00A892FB /* AppDelegate.h */,
 				8E648D7518D2A4FE00A892FB /* AppDelegate.m */,
 				8E648D7A18D2A4FE00A892FB /* ViewController.h */,
@@ -155,36 +130,7 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		550697D41C68576D008C5BAF /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				550697E51C685785008C5BAF /* UIFloatLabelTextField.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		550697D61C68576D008C5BAF /* UIFloatLabelTextField */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 550697E21C68576D008C5BAF /* Build configuration list for PBXNativeTarget "UIFloatLabelTextField" */;
-			buildPhases = (
-				550697D21C68576D008C5BAF /* Sources */,
-				550697D31C68576D008C5BAF /* Frameworks */,
-				550697D41C68576D008C5BAF /* Headers */,
-				550697D51C68576D008C5BAF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = UIFloatLabelTextField;
-			productName = UIFloatLabelTextField;
-			productReference = 550697D71C68576D008C5BAF /* UIFloatLabelTextField.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		8E648D6118D2A4FE00A892FB /* UIFloatLabelSampleApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E648D9418D2A4FE00A892FB /* Build configuration list for PBXNativeTarget "UIFloatLabelSampleApp" */;
@@ -197,7 +143,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				550697DD1C68576D008C5BAF /* PBXTargetDependency */,
 			);
 			name = UIFloatLabelSampleApp;
 			productName = UIFloatLabelSampleApp;
@@ -212,11 +157,6 @@
 			attributes = {
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Arthur Ariel Sabintsev";
-				TargetAttributes = {
-					550697D61C68576D008C5BAF = {
-						CreatedOnToolsVersion = 7.2.1;
-					};
-				};
 			};
 			buildConfigurationList = 8E648D5D18D2A4FE00A892FB /* Build configuration list for PBXProject "UIFloatLabelSampleApp" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -232,19 +172,11 @@
 			projectRoot = "";
 			targets = (
 				8E648D6118D2A4FE00A892FB /* UIFloatLabelSampleApp */,
-				550697D61C68576D008C5BAF /* UIFloatLabelTextField */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		550697D51C68576D008C5BAF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8E648D6018D2A4FE00A892FB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -258,14 +190,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		550697D21C68576D008C5BAF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				550697E41C685775008C5BAF /* UIFloatLabelTextField.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8E648D5E18D2A4FE00A892FB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -273,18 +197,11 @@
 				8E648D7C18D2A4FE00A892FB /* ViewController.m in Sources */,
 				8E648D7618D2A4FE00A892FB /* AppDelegate.m in Sources */,
 				8E648D7218D2A4FE00A892FB /* main.m in Sources */,
+				8E371FDB1DD57A7E00823BC0 /* UIFloatLabelTextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		550697DD1C68576D008C5BAF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 550697D61C68576D008C5BAF /* UIFloatLabelTextField */;
-			targetProxy = 550697DC1C68576D008C5BAF /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8E648D6E18D2A4FE00A892FB /* InfoPlist.strings */ = {
@@ -298,60 +215,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		550697E01C68576D008C5BAF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = UIFloatLabelTextField/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Sabintsev.UIFloatLabelTextField;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		550697E11C68576D008C5BAF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = UIFloatLabelTextField/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Sabintsev.UIFloatLabelTextField;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		8E648D9218D2A4FE00A892FB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -458,15 +321,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		550697E21C68576D008C5BAF /* Build configuration list for PBXNativeTarget "UIFloatLabelTextField" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				550697E01C68576D008C5BAF /* Debug */,
-				550697E11C68576D008C5BAF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		8E648D5D18D2A4FE00A892FB /* Build configuration list for PBXProject "UIFloatLabelSampleApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -43,6 +43,7 @@
     [twitterTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
     twitterTextField.placeholder = @"Twitter Moniker";
     twitterTextField.dismissKeyboardWhenClearingTextField = @YES;
+    twitterTextField.disableClearButton = @YES;
     [self.view addSubview:twitterTextField];
 
     // Horizontal
@@ -60,7 +61,7 @@
                                                                       options:NSLayoutFormatAlignAllBaseline
                                                                       metrics:nil
                                                                         views:NSDictionaryOfVariableBindings(twitterTextField)]];
-    
+
     // Vertical
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-80-[firstNameTextField(44)]-10-[lastNameTextField(44)]-10-[twitterTextField(44)]"
                                                                       options:0

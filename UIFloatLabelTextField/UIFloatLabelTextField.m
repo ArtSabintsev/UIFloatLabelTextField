@@ -305,11 +305,11 @@
     }
 }
 
-- (void)setDisableClearButton:(BOOL)disableClearButton
+- (void)setDisableClearButton:(NSNumber *)disableClearButton
 {
     _disableClearButton = disableClearButton;
     
-    self.clearButtonMode = (self.disableClearButton) ? UITextFieldViewModeNever : UITextFieldViewModeWhileEditing;
+    self.clearButtonMode = ([_disableClearButton boolValue]) ? UITextFieldViewModeNever : UITextFieldViewModeWhileEditing;
 }
 
 - (CGRect)textRectForBounds:(CGRect)bounds
