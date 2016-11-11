@@ -11,7 +11,7 @@
 @interface UIFloatLabelTextField ()
 
 @property (nonatomic, copy) NSString *storedText;
-@property (nonatomic, strong) UIButton *clearTextFieldButton;
+@property (nonatomic, strong) UIButton *textFieldClearButton;
 @property (nonatomic, assign) CGFloat xOrigin;
 
 @end
@@ -65,7 +65,7 @@
     [self setupTextField];
     
     // Reference Apple's clearButton and add animation
-    [self setupClearTextFieldButton];
+    [self setuptextFieldClearButton];
     
     // Build floatLabel
     [self setupFloatLabel];
@@ -94,7 +94,7 @@
                                                  name:UITextFieldTextDidChangeNotification object:nil];
 }
 
-- (void)setupClearTextFieldButton
+- (void)setuptextFieldClearButton
 {
     // A boolean that toggles the state of the keyboard after the clear-text button is pressed.
     _dismissKeyboardWhenClearingTextField = @NO;
@@ -108,15 +108,15 @@
     // Create function pointer that returns UIButton from implementation of method that contains clearButtonSelector
     UIButton * (* clearButtonFunctionPointer)(id, SEL) = (UIButton *(*)(id, SEL))clearButtonImplementation;
     
-    // Set clearTextFieldButton reference to "clearButton" from clearButtonSelector
-    _clearTextFieldButton = clearButtonFunctionPointer(self, clearButtonSelector);
+    // Set textFieldClearButton reference to "clearButton" from clearButtonSelector
+    _textFieldClearButton = clearButtonFunctionPointer(self, clearButtonSelector);
     
-    if (_clearTextFieldButton) {
-        // Remove all clearTextFieldButton target-actions (e.g., Apple's standard clearButton actions)
-        [self.clearTextFieldButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
+    if (_textFieldClearButton) {
+        // Remove all textFieldClearButton target-actions (e.g., Apple's standard clearButton actions)
+        [self.textFieldClearButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
         
-        // Add new target-action for clearTextFieldButton
-        [_clearTextFieldButton addTarget:self action:@selector(clearTextField) forControlEvents:UIControlEventTouchUpInside];
+        // Add new target-action for textFieldClearButton
+        [_textFieldClearButton addTarget:self action:@selector(clearTextField) forControlEvents:UIControlEventTouchUpInside];
     }
 }
 
@@ -303,13 +303,6 @@
             _xOrigin = _horizontalPadding;
             break;
     }
-}
-
-- (void)setDisableClearButton:(NSNumber *)disableClearButton
-{
-    _disableClearButton = disableClearButton;
-    
-    self.clearButtonMode = ([_disableClearButton boolValue]) ? UITextFieldViewModeNever : UITextFieldViewModeWhileEditing;
 }
 
 - (CGRect)textRectForBounds:(CGRect)bounds

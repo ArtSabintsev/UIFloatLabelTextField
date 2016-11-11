@@ -43,7 +43,7 @@
     [twitterTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
     twitterTextField.placeholder = @"Twitter Moniker";
     twitterTextField.dismissKeyboardWhenClearingTextField = @YES;
-    twitterTextField.disableClearButton = @YES;
+    twitterTextField.clearButtonMode = UITextFieldViewModeNever;
     [self.view addSubview:twitterTextField];
 
     // Horizontal
