@@ -2,7 +2,7 @@
 
 ### A subclassed UITextField that implements the Float Label UI design pattern.
 
-![Cocoapods](https://img.shields.io/cocoapods/v/UIFloatLabelTextField.svg) ![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)
+![Cocoapods](https://img.shields.io/cocoapods/v/UIFloatLabelTextField.svg) ![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat) [![CocoaPods](https://img.shields.io/cocoapods/dt/UIFloatLabelTextField.svg)](https://cocoapods.org/pods/UIFloatLabelTextField) [![CocoaPods](https://img.shields.io/cocoapods/dm/UIFloatLabelTextField.svg)](https://cocoapods.org/pods/UIFloatLabelTextField)
 ___
 
 ## Note
