@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8E648D6118D2A4FE00A892FB"
-               BuildableName = "UIFloatLabelTextField.app"
-               BlueprintName = "UIFloatLabelTextField"
-               ReferencedContainer = "container:UIFloatLabelTextField.xcodeproj">
+               BuildableName = "UIFloatLabelTextFieldExample.app"
+               BlueprintName = "UIFloatLabelTextFieldExample"
+               ReferencedContainer = "container:UIFloatLabelTextFieldExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8E648D6118D2A4FE00A892FB"
-            BuildableName = "UIFloatLabelTextField.app"
-            BlueprintName = "UIFloatLabelTextField"
-            ReferencedContainer = "container:UIFloatLabelTextField.xcodeproj">
+            BuildableName = "UIFloatLabelTextFieldExample.app"
+            BlueprintName = "UIFloatLabelTextFieldExample"
+            ReferencedContainer = "container:UIFloatLabelTextFieldExample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8E648D6118D2A4FE00A892FB"
-            BuildableName = "UIFloatLabelTextField.app"
-            BlueprintName = "UIFloatLabelTextField"
-            ReferencedContainer = "container:UIFloatLabelTextField.xcodeproj">
+            BuildableName = "UIFloatLabelTextFieldExample.app"
+            BlueprintName = "UIFloatLabelTextFieldExample"
+            ReferencedContainer = "container:UIFloatLabelTextFieldExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8E648D6118D2A4FE00A892FB"
-            BuildableName = "UIFloatLabelTextField.app"
-            BlueprintName = "UIFloatLabelTextField"
-            ReferencedContainer = "container:UIFloatLabelTextField.xcodeproj">
+            BuildableName = "UIFloatLabelTextFieldExample.app"
+            BlueprintName = "UIFloatLabelTextFieldExample"
+            ReferencedContainer = "container:UIFloatLabelTextFieldExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
