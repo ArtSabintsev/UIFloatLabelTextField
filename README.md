@@ -14,8 +14,6 @@ In 2013, [**Matt D. Smith**](http://twitter.com/mds) unveiled the **[Float Label
 
 ![Sample Gif of Library in Action](https://github.com/ArtSabintsev/UIFloatLabelTextField/blob/master/UIFloatLabelTextFieldSample.gif)
 
-Image credit: [Matt D. Smith](http://twitter.com/mds).
-
 ## Features
 - Works with all view `init` styles
 	- Visual Formatting Language (for programmatic NSAutoLayout)
